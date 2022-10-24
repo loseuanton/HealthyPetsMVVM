@@ -10,6 +10,7 @@ import SnapKit
 
 class EditProfileDogViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     var changeDogImage: ((UIImage?) -> Void)?
+    var openListOfDogScreen: (() -> Void)?
     
     
     // MARK: - Views
@@ -17,6 +18,7 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
     var viewModel = EditProfileDogViewModel()
     var items: [BaseConfigureTableCellRowProtocol] = []
     var newDogServices = NewDogServices()
+   
     
     
     
@@ -33,8 +35,10 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         rootView.editProfileTableView.register(EditBreedsTableViewCell.self, forCellReuseIdentifier: "EditBreedsTableViewCellItem")
         rootView.editProfileTableView.delegate = self
         rootView.editProfileTableView.dataSource = self
-        rootView.picker.delegate = self
-        rootView.picker.dataSource = self
+        rootView.pickerGender.delegate = self
+        rootView.pickerGender.dataSource = self
+        rootView.pickerAge.delegate = self
+        rootView.pickerAge.dataSource = self
         viewModel.changeDogImage = self.changeDogImage
         configureView()
         bindingViewModel()
@@ -91,8 +95,17 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     @objc func deleteEditDog() {
-        newDogServices.removeDog(dog: viewModel.editDog!)
-        self.navigationController?.popToRootViewController(animated: true)
+        let alert = UIAlertController(title: "Вы уверены, что хотите удалить профиль собаки?", message: "Все данные будут удалены.", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "Отмена", style: .default) { _ in
+            alert.dismiss(animated: true)
+        }
+        let yesButton = UIAlertAction(title: "Да", style: .default) { _ in
+            self.newDogServices.removeDog(dog: self.viewModel.editDog!)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        alert.addAction(cancelButton)
+        alert.addAction(yesButton)
+        present(alert, animated: true, completion: nil)
     }
     @objc func closeScreen() {
         self.navigationController?.popToRootViewController(animated: true)
@@ -153,9 +166,14 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         }
         
     }
+    func updateDogBreed(breed: String) {
+        viewModel.updateDogBreed(breed: breed)
+        print("\(breed) breed")
+    }
+    
 }
 extension EditProfileDogViewController: UITableViewDelegate, UITableViewDataSource {
-    
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return items.count
@@ -178,16 +196,21 @@ extension EditProfileDogViewController: UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            view.addSubview(rootView.picker)
-            rootView.picker.snp.makeConstraints { make in
-                make.height.equalTo(216.VAdapted)
-                make.left.equalTo(view.snp.left).offset(0.HAdapted)
-                make.right.equalTo(view.snp.right).offset(0.HAdapted)
-                make.bottom.equalTo(view.snp.bottom).offset(0.VAdapted)
-                
-            }
+            rootView.pickerAgeOff()
+            rootView.changeStatePickerGender()
+            
+        } else if indexPath.row == 2 {
+            rootView.pickerGenderOff()
+            rootView.changeStatePickerAge()
+            
+            
+        } else if indexPath.row == 3 {
+            rootView.pickerAgeOff()
+            rootView.pickerGenderOff()
+            openListOfDogScreen?()
         } else {
-            rootView.picker.removeFromSuperview()
+            rootView.pickerAgeOff()
+            rootView.pickerGenderOff()
         }
         
         
@@ -206,35 +229,151 @@ extension EditProfileDogViewController: UITableViewDelegate, UITableViewDataSour
 }
 extension EditProfileDogViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        if pickerView === rootView.pickerGender {
+            return 1
+        } else {
+            return 4
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
+        if pickerView === rootView.pickerGender {
+            return 2
+        } else {
+            if component == 0 {
+                return 26
+            } else if component == 1 {
+                return 1
+            } else if component == 2 {
+                return 12
+            } else {
+                return 1
+            }
+        }
+        
     }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        if pickerView === rootView.pickerGender {
+            if row == 0 {
+                let text =  UILabel()
+                text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "Мужской", letter: 0.7)
+                text.textAlignment = .center
+                
+                return text
+            } else {
+                let text =  UILabel()
+                text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "Женский", letter: 0.7)
+                text.textAlignment = .center
+                
+                return text
+            }
+        } else {
+            if component == 0 {
+                let text =  UILabel()
+                text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "\(row)", letter: 0.7)
+                text.textAlignment = .center
+                
+                return text
+            }
+            if component == 1 {
+                let text =  UILabel()
+                text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "года", letter: 0.7)
+                text.textAlignment = .left
+                
+                return text
+            }
+            if component == 2 {
+                let text =  UILabel()
+                text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "\(row)", letter: 0.7)
+                text.textAlignment = .center
+                
+                return text
+            }
+            if component == 3 {
+                let text =  UILabel()
+                text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "месяцев", letter: 0.7)
+                text.textAlignment = .left
+                
+                return text
+            }
+            return UIView()
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        if pickerView === rootView.pickerGender {
+            return UIScreen.main.bounds.width
+        } else {
+            if component == 0 {
+                return UIScreen.main.bounds.width / 6
+            }
+            if component == 1 {
+                return UIScreen.main.bounds.width / 4
+            }
+            if component == 2 {
+                return UIScreen.main.bounds.width / 6
+            }
+            if component == 3 {
+                return UIScreen.main.bounds.width / 4
+            }
+            return 0.0
+        }
+        }
+        
+    
     
     
 }
 extension EditProfileDogViewController: UIPickerViewDelegate {
+    /*
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if row == 0 {
-            return "Мужской"
+        if pickerView === rootView.pickerGender {
+            if row == 0 {
+                return "Мужской"
+            } else {
+                return "Женский"
+            }
+            
         } else {
-            return "Женский"
+            if component == 0 {
+                return "\(row)"
+            }
+            if component == 1 {
+                return "Года"
+            }
+            if component == 2 {
+                return "\(row)"
+            }
+            if component == 3 {
+                return "Месяцев"
+            }
+            return ""
         }
         
-        
     }
+     */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row == 0 {
-            viewModel.updateDogYearsAge(gender: "Мужской")
+       
+        if pickerView === rootView.pickerGender {
+            if row == 0 {
+                viewModel.updateDogGender(gender: "Мужской")
+                
+            }
+            if row == 1 {
+                viewModel.updateDogGender(gender: "Женский")
+            }
+            
+        } else {
+            if component == 0 {
+                viewModel.updateDogYearsAge(age: row)
+            }
+            if component == 2 {
+                viewModel.updateDogMonthAge(age: row)
+            }
             
         }
-        if row == 1 {
-            viewModel.updateDogYearsAge(gender: "Женский")
-        }
-        
     }
+    
     
 }
 

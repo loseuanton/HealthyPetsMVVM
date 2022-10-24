@@ -33,8 +33,16 @@ class RepeatViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        rootView.backgroundView.gradient()
         
+        
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        view.gradient()
+        
+        
+      
     }
     func configureView() {
         rootView.addSubviews()

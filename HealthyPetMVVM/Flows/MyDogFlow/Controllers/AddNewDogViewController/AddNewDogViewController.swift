@@ -12,7 +12,8 @@ class AddNewDogViewController: UIViewController {
     var rootView = AddNewDogView()
     let viewModel = AddNewDogViewModel()
     var items: [BaseConfigureCollectionCellRowProtocol] = []
-    var openListOfDogs: (() -> Void)?
+    // TODO: вопрос 3 по выбору породы
+    var openListOfDogs: (( ((String?)->Void)? ) -> Void)?
     var changeDogImage: ((UIImage?) -> Void)?
     var newDogServices = NewDogServices()
    
@@ -45,6 +46,9 @@ class AddNewDogViewController: UIViewController {
         
         bindingViewModel()
         viewModel.loadCollectionCells()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
         
        
         
@@ -175,16 +179,10 @@ extension AddNewDogViewController: UICollectionViewDelegate {
         print(indexPath.row)
         
         if indexPath.row == 2 {
-            view.addSubview(rootView.picker)
-            rootView.picker.snp.makeConstraints { make in
-                make.height.equalTo(216.VAdapted)
-                make.left.equalTo(view.snp.left).offset(0.HAdapted)
-                make.right.equalTo(view.snp.right).offset(0.HAdapted)
-                make.bottom.equalTo(view.snp.bottom).offset(0.VAdapted)
-                
-            }
+            rootView.changeStatePicker()
+           
         } else {
-            rootView.picker.removeFromSuperview()
+            rootView.pickerOff()
         }
     }
 }
@@ -230,24 +228,54 @@ extension AddNewDogViewController: UIPickerViewDataSource {
         }
         
     }
-}
-extension AddNewDogViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         if component == 0 {
-            return "\(row)"
+            let text =  UILabel()
+            text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "\(row)", letter: 0.7)
+            text.textAlignment = .center
+            
+            return text
         }
         if component == 1 {
-            return "Года"
+            let text =  UILabel()
+            text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "года", letter: 0.7)
+            text.textAlignment = .left
+            
+            return text
         }
         if component == 2 {
-            return "\(row)"
+            let text =  UILabel()
+            text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "\(row)", letter: 0.7)
+            text.textAlignment = .center
+            
+            return text
         }
         if component == 3 {
-            return "Месяцев"
+            let text =  UILabel()
+            text.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "месяцев", letter: 0.7)
+            text.textAlignment = .left
+            
+            return text
         }
-        return ""
+        return UIView()
     }
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        if component == 0 {
+            return UIScreen.main.bounds.width / 6
+        }
+        if component == 1 {
+            return UIScreen.main.bounds.width / 4
+        }
+        if component == 2 {
+            return UIScreen.main.bounds.width / 6
+        }
+        if component == 3 {
+            return UIScreen.main.bounds.width / 4
+        }
+        return 0.0
+    }
+}
+extension AddNewDogViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0 {
             viewModel.updateDogYearsAge(age: row)
@@ -257,7 +285,6 @@ extension AddNewDogViewController: UIPickerViewDelegate {
         }
         
     }
-    
     
 }
 

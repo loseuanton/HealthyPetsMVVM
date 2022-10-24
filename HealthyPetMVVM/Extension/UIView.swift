@@ -19,5 +19,13 @@ extension UIView {
         self.layer.addSublayer(gradient)
         
     }
+    func missedGradient() {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = [UIColor(red: 0.935, green: 0.643, blue: 0.961, alpha: 1).cgColor, UIColor(red: 1, green: 0.554, blue: 0.554, alpha: 1).cgColor]
+        //gradient.cornerRadius = 13
+        gradient.zPosition = -1
+        self.layer.addSublayer(gradient)
+    }
     
 }

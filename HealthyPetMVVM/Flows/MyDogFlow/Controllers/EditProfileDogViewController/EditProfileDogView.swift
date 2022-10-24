@@ -19,9 +19,14 @@ class EditProfileDogView: UIView {
     var photoIcon = UIImageView()
     var editProfileTableView = UITableView()
     var deleteProfileButton = UIButton()
-    var picker = UIPickerView()
+    var pickerGender = UIPickerView()
+    var pickerAge = UIPickerView()
+    var constraint = NSLayoutConstraint()
+    var statePickerAge = 0
+    var statePickerGender = 0
     func decorate() {
-        picker.backgroundColor = .white
+        pickerGender.backgroundColor = .white
+        pickerAge.backgroundColor = .white
         
        
        
@@ -39,7 +44,7 @@ class EditProfileDogView: UIView {
           
         
         centralDogIcon.image = UIImage(named: "centralPawIcon")
-        centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 0.4).cgColor
+        centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 1).cgColor
            // image.bounds = image.bounds.insetBy(dx: -4, dy: -4)
         centralDogIcon.layer.borderWidth = 4
         centralDogIcon.layer.cornerRadius = centralDogIcon.bounds.size.height / 2.0
@@ -58,6 +63,7 @@ class EditProfileDogView: UIView {
         editProfileTableView.isScrollEnabled = false
         
         deleteProfileButton.setTitle("Удалить профиль", for: .normal)
+        deleteProfileButton.setTitle("Удалить профиль", for: .highlighted)
         deleteProfileButton.setTitleColor(.red, for: .normal)
         deleteProfileButton.layer.cornerRadius = 10
         deleteProfileButton.clipsToBounds = true
@@ -66,6 +72,8 @@ class EditProfileDogView: UIView {
     }
     func addSubviews() {
         self.addSubview(backgroundView)
+        self.addSubview(pickerAge)
+        self.addSubview(pickerGender)
         backgroundView.addSubview(centralDogIcon)
         backgroundView.addSubview(photoIcon)
         backgroundView.addSubview(editProfileTableView)
@@ -80,7 +88,7 @@ class EditProfileDogView: UIView {
             //make.left.equalTo(view).offset(160.HAdapted)
             //make.right.equalTo(view).offset(-160.HAdapted)
             make.centerX.equalToSuperview()
-            make.size.equalTo([70,70].HResized)
+            make.size.equalTo([78,78].HResized)
         }
         photoIcon.snp.makeConstraints { make in
             make.top.equalTo(centralDogIcon.snp.top).offset(47.VAdapted)
@@ -97,6 +105,104 @@ class EditProfileDogView: UIView {
             make.left.equalTo(backgroundView.snp.left).offset(16.HAdapted)
             make.right.equalTo(backgroundView.snp.right).offset(-16.HAdapted)
             make.height.equalTo(54.VAdapted)
+        }
+        pickerAge.snp.makeConstraints { make in
+            make.height.equalTo(0.VAdapted)
+            make.left.equalTo(self.snp.left).offset(0.HAdapted)
+            make.right.equalTo(self.snp.right).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+        }
+        
+        pickerGender.snp.makeConstraints { make in
+            make.height.equalTo(0.VAdapted)
+            make.left.equalTo(self.snp.left).offset(0.HAdapted)
+            make.right.equalTo(self.snp.right).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+        }
+       
+        
+    }
+    func changeStatePickerAge() {
+        self.statePickerAge = (self.statePickerAge + 1) % 2
+        UIView.animate(withDuration: 0.2) {
+            self.updatePickerAgeConstraint()
+            self.layoutIfNeeded()
+        }
+    }
+    func updatePickerAgeConstraint() {
+        if self.statePickerAge == 0 {
+            pickerAge.snp.remakeConstraints { make in
+                make.height.equalTo(0.VAdapted)
+                make.left.equalTo(self.snp.left).offset(0.HAdapted)
+                make.right.equalTo(self.snp.right).offset(0.HAdapted)
+                make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+                
+            }
+        } else {
+            pickerAge.snp.remakeConstraints { make in
+                make.height.equalTo(216.VAdapted)
+                make.left.equalTo(self.snp.left).offset(0.HAdapted)
+                make.right.equalTo(self.snp.right).offset(0.HAdapted)
+                make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            }
+        }
+    }
+    func pickerAgeOff() {
+        self.statePickerAge = 0
+        UIView.animate(withDuration: 0.2) {
+            self.closedPickerAge()
+            self.layoutIfNeeded()
+        }
+    }
+    func closedPickerAge() {
+        pickerAge.snp.remakeConstraints { make in
+            make.height.equalTo(0.VAdapted)
+            make.left.equalTo(self.snp.left).offset(0.HAdapted)
+            make.right.equalTo(self.snp.right).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            
+        }
+    }
+    
+    func changeStatePickerGender() {
+        self.statePickerGender = (self.statePickerGender + 1) % 2
+        UIView.animate(withDuration: 0.2) {
+            self.updatePickerGenderConstraint()
+            self.layoutIfNeeded()
+        }
+    }
+    func updatePickerGenderConstraint() {
+        if self.statePickerGender == 0 {
+            pickerGender.snp.remakeConstraints { make in
+                make.height.equalTo(0.VAdapted)
+                make.left.equalTo(self.snp.left).offset(0.HAdapted)
+                make.right.equalTo(self.snp.right).offset(0.HAdapted)
+                make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+                
+            }
+        } else {
+            pickerGender.snp.remakeConstraints { make in
+                make.height.equalTo(216.VAdapted)
+                make.left.equalTo(self.snp.left).offset(0.HAdapted)
+                make.right.equalTo(self.snp.right).offset(0.HAdapted)
+                make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            }
+        }
+    }
+    func pickerGenderOff() {
+        self.statePickerGender = 0
+        UIView.animate(withDuration: 0.2) {
+            self.closedPickerGender()
+            self.layoutIfNeeded()
+        }
+    }
+    func closedPickerGender() {
+        pickerGender.snp.remakeConstraints { make in
+            make.height.equalTo(0.VAdapted)
+            make.left.equalTo(self.snp.left).offset(0.HAdapted)
+            make.right.equalTo(self.snp.right).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            
         }
     }
 }

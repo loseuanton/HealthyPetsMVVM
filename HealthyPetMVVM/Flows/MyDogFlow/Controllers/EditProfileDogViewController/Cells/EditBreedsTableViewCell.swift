@@ -9,9 +9,15 @@ import Foundation
 import UIKit
 import SnapKit
 
-struct EditBreedsTableViewCellItem: BaseConfigureTableCellRowProtocol {
+class EditBreedsTableViewCellItem: BaseConfigureTableCellRowProtocol {
+    init(){}
     var cellIdentifier = "EditBreedsTableViewCellItem"
     var dog: NewDog?
+    var updateDogBreedComplition: ((String) -> Void)?
+    func updateDogBreed(breed: String) {
+        updateDogBreedComplition?(breed)
+    }
+   
 }
 
 class EditBreedsTableViewCell: BaseTableViewCell {
@@ -47,10 +53,16 @@ class EditBreedsTableViewCell: BaseTableViewCell {
         breedTextLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "Не указано", letter: -0.41)
         if let item = item as? EditBreedsTableViewCellItem {
             self.item = item
-            breedTextLabel.text = item.dog?.breed
+            breedTextLabel.text = item.dog?.copyNewDog().breed
 
         }
+        self.item?.updateDogBreedComplition = { breed in
+            self.breedTextLabel.text = "\(breed)"
+            print("\(breed) пришла")
+        }
+        
     }
+    
     func addSubviews() {
         contentView.addSubview(breedLabel)
         contentView.addSubview(breedTextLabel)

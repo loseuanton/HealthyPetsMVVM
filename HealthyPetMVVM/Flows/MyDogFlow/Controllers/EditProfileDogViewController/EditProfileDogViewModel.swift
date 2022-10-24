@@ -14,10 +14,26 @@ class EditProfileDogViewModel {
     var editDogCopy: NewDog?
     var changeDogImage: ((UIImage?) -> Void)?
     var dogGenderItem = EditGenderTableViewCellItem()
+    var dogAgeItem = EditAgeTableViewCellItem()
+    var dogBreedItem = EditBreedsTableViewCellItem()
     
-    func updateDogYearsAge(gender: String) {
+    
+    func updateDogYearsAge(age: Int) {
+        editDogCopy?.ageYears = age
+        dogAgeItem.updateDogAgeYears(age: age)
+    }
+    func updateDogMonthAge(age: Int) {
+        editDogCopy?.ageMonth = age
+        dogAgeItem.updateDogAgeMonth(age: age)
+    }
+    
+    func updateDogGender(gender: String) {
         editDogCopy?.gender = gender
         dogGenderItem.updateDogYearsAge(gender: gender)
+    }
+    func updateDogBreed(breed: String) {
+        editDogCopy?.breed = breed
+        dogBreedItem.updateDogBreed(breed: breed)
     }
     
     func loadTableCells() {
@@ -49,13 +65,16 @@ class EditProfileDogViewModel {
     func generateEditAgeTableViewCellItem() -> EditAgeTableViewCellItem {
         var item = EditAgeTableViewCellItem()
         item.dog = editDogCopy
-        return item
+        dogAgeItem = item
+        return dogAgeItem
         
     }
     func generateEditBreedsTableViewCellItem() -> EditBreedsTableViewCellItem {
         var item = EditBreedsTableViewCellItem()
         item.dog = editDogCopy
-        return item
+        dogBreedItem = item
+        
+        return dogBreedItem
         
     }
     

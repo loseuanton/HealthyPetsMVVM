@@ -27,6 +27,7 @@ class RepeatView: UIView {
         leftBarButton.tintColor = .black
         leftBarButton.setTitleColor(UIColor.black, for: .normal)
         leftBarButton.setTitleColor(UIColor.blue, for: .selected)
+        
      
         
     }

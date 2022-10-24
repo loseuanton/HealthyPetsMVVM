@@ -51,6 +51,23 @@ class ListOfDogsTableViewCell: BaseTableViewCell {
             print(item.listOfDog?.name)
         }
     }
+    
+    // TODO: вопрос 4 по смене цвета текста
+    
+    func selectCell() {
+        self.accessoryType = .checkmark
+        self.tintColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+        dogNicknameLabel.textColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+    }
+    
+    func deselectCell() {
+        self.accessoryType = .none
+        self.tintColor = .black
+        dogNicknameLabel.textColor = .black
+    }
+    
+    
+    
     func addSubviews() {
         contentView.addSubview(dogNicknameLabel)
     }

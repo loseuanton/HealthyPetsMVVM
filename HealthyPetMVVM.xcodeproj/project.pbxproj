@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67C997A328F1D57A0046BB11 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67C997A228F1D57A0046BB11 /* SF-Pro.ttf */; };
+		B927B8C529056BFD00F9614D /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927B8C429056BFD00F9614D /* EditReminderViewController.swift */; };
+		B927B8C729056C0E00F9614D /* EditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927B8C629056C0E00F9614D /* EditReminderView.swift */; };
+		B927B8C929056C2400F9614D /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927B8C829056C2400F9614D /* EditReminderViewModel.swift */; };
 		B94EEDFB289D45F00047D590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEDFA289D45F00047D590 /* AppDelegate.swift */; };
 		B94EEE02289D45F00047D590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94EEE00289D45F00047D590 /* Main.storyboard */; };
 		B94EEE04289D45F10047D590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94EEE03289D45F10047D590 /* Assets.xcassets */; };
@@ -49,15 +53,19 @@
 		B94EEE7828AE44470047D590 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE7728AE44470047D590 /* ReminderViewController.swift */; };
 		B94EEE7A28AE44520047D590 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE7928AE44520047D590 /* ReminderView.swift */; };
 		B94EEE7C28AE44600047D590 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE7B28AE44600047D590 /* ReminderViewModel.swift */; };
+		B95AD6AB28F2EA9E00A3EBE8 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95AD6AA28F2EA9E00A3EBE8 /* NotificationCenter.swift */; };
+		B95AD6AE28F4620B00A3EBE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B95AD6B028F4620B00A3EBE8 /* Localizable.strings */; };
 		B9BB12DE28DF36B500F044D3 /* EditNicknameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12DD28DF36B500F044D3 /* EditNicknameTableViewCell.swift */; };
 		B9BB12E028DF36D500F044D3 /* EditGenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12DF28DF36D500F044D3 /* EditGenderTableViewCell.swift */; };
 		B9BB12E228DF36EA00F044D3 /* EditAgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12E128DF36EA00F044D3 /* EditAgeTableViewCell.swift */; };
 		B9BB12E428DF38C900F044D3 /* EditBreedsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12E328DF38C900F044D3 /* EditBreedsTableViewCell.swift */; };
-		B9BB12EE28DF7C3D00F044D3 /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9BB12EB28DF7C3D00F044D3 /* SFProText-Regular.otf */; };
-		B9BB12EF28DF7C3D00F044D3 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9BB12EC28DF7C3D00F044D3 /* SFProText-Semibold.otf */; };
-		B9BB12F028DF7C3D00F044D3 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9BB12ED28DF7C3D00F044D3 /* SF-Pro.ttf */; };
 		B9BB12F928E33ED800F044D3 /* NickName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12F828E33ED800F044D3 /* NickName.swift */; };
 		B9BB12FD28EDB74A00F044D3 /* HealthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12FC28EDB74A00F044D3 /* HealthTableViewCell.swift */; };
+		B9BB130928F0719E00F044D3 /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9BB130628F0719E00F044D3 /* SFProText-Regular.otf */; };
+		B9BB130A28F0719E00F044D3 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9BB130728F0719E00F044D3 /* SFProText-Semibold.otf */; };
+		B9BB130D28F072EE00F044D3 /* HealthReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB130C28F072EE00F044D3 /* HealthReminderTableViewCell.swift */; };
+		B9BB131328F2360300F044D3 /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB131228F2360300F044D3 /* ReminderService.swift */; };
+		B9BB131528F2361200F044D3 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB131428F2361200F044D3 /* Reminder.swift */; };
 		B9DB044C28BA443900A78C84 /* EditProfileDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB044B28BA443900A78C84 /* EditProfileDogViewController.swift */; };
 		B9DB044E28BA444900A78C84 /* EditProfileDogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB044D28BA444900A78C84 /* EditProfileDogView.swift */; };
 		B9DB045028BA445600A78C84 /* EditProfileDogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB044F28BA445600A78C84 /* EditProfileDogViewModel.swift */; };
@@ -80,7 +88,11 @@
 /* Begin PBXFileReference section */
 		56338AD4F4ACFF010763B746 /* Pods_HealthyPetMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthyPetMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EBBFECD3D3FE99782EE1830 /* Pods-HealthyPetMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyPetMVVM.release.xcconfig"; path = "Target Support Files/Pods-HealthyPetMVVM/Pods-HealthyPetMVVM.release.xcconfig"; sourceTree = "<group>"; };
+		67C997A228F1D57A0046BB11 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		7CDEC0DB8D03292B3B008099 /* Pods-HealthyPetMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyPetMVVM.debug.xcconfig"; path = "Target Support Files/Pods-HealthyPetMVVM/Pods-HealthyPetMVVM.debug.xcconfig"; sourceTree = "<group>"; };
+		B927B8C429056BFD00F9614D /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
+		B927B8C629056C0E00F9614D /* EditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderView.swift; sourceTree = "<group>"; };
+		B927B8C829056C2400F9614D /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
 		B94EEDF7289D45F00047D590 /* HealthyPetMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthyPetMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94EEDFA289D45F00047D590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B94EEE01289D45F00047D590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,15 +137,20 @@
 		B94EEE7728AE44470047D590 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		B94EEE7928AE44520047D590 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 		B94EEE7B28AE44600047D590 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
+		B95AD6AA28F2EA9E00A3EBE8 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		B95AD6AF28F4620B00A3EBE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B95AD6B128F4625400A3EBE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B9BB12DD28DF36B500F044D3 /* EditNicknameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameTableViewCell.swift; sourceTree = "<group>"; };
 		B9BB12DF28DF36D500F044D3 /* EditGenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGenderTableViewCell.swift; sourceTree = "<group>"; };
 		B9BB12E128DF36EA00F044D3 /* EditAgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAgeTableViewCell.swift; sourceTree = "<group>"; };
 		B9BB12E328DF38C900F044D3 /* EditBreedsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreedsTableViewCell.swift; sourceTree = "<group>"; };
-		B9BB12EB28DF7C3D00F044D3 /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProText-Regular.otf"; path = "../../../../../../Downloads/steemool_ios-feature-autorization 2/Steemool/Steemool/Resources/Fonts/SFProText-Regular.otf"; sourceTree = "<group>"; };
-		B9BB12EC28DF7C3D00F044D3 /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProText-Semibold.otf"; path = "../../../../../../Downloads/steemool_ios-feature-autorization 2/Steemool/Steemool/Resources/Fonts/SFProText-Semibold.otf"; sourceTree = "<group>"; };
-		B9BB12ED28DF7C3D00F044D3 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro.ttf"; path = "../../../../../../Downloads/steemool_ios-feature-autorization 2/Steemool/Steemool/Resources/Fonts/SF-Pro.ttf"; sourceTree = "<group>"; };
 		B9BB12F828E33ED800F044D3 /* NickName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickName.swift; sourceTree = "<group>"; };
 		B9BB12FC28EDB74A00F044D3 /* HealthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCell.swift; sourceTree = "<group>"; };
+		B9BB130628F0719E00F044D3 /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
+		B9BB130728F0719E00F044D3 /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
+		B9BB130C28F072EE00F044D3 /* HealthReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthReminderTableViewCell.swift; sourceTree = "<group>"; };
+		B9BB131228F2360300F044D3 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderService.swift; sourceTree = "<group>"; };
+		B9BB131428F2361200F044D3 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		B9DB044B28BA443900A78C84 /* EditProfileDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDogViewController.swift; sourceTree = "<group>"; };
 		B9DB044D28BA444900A78C84 /* EditProfileDogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDogView.swift; sourceTree = "<group>"; };
 		B9DB044F28BA445600A78C84 /* EditProfileDogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDogViewModel.swift; sourceTree = "<group>"; };
@@ -181,6 +198,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B927B8C329056BDA00F9614D /* EditReminderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B927B8C429056BFD00F9614D /* EditReminderViewController.swift */,
+				B927B8C629056C0E00F9614D /* EditReminderView.swift */,
+				B927B8C829056C2400F9614D /* EditReminderViewModel.swift */,
+			);
+			path = EditReminderViewController;
+			sourceTree = "<group>";
+		};
 		B94EEDEE289D45EF0047D590 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +239,7 @@
 				B94EEE14289D472B0047D590 /* Resources */,
 				B94EEE15289D47390047D590 /* Library */,
 				B94EEE08289D45F10047D590 /* Info.plist */,
+				B95AD6B028F4620B00A3EBE8 /* Localizable.strings */,
 			);
 			path = HealthyPetMVVM;
 			sourceTree = "<group>";
@@ -268,6 +296,7 @@
 			children = (
 				B94EEE27289D48B70047D590 /* UIView.swift */,
 				B94EEE29289D48D40047D590 /* UILabel.swift */,
+				B95AD6AA28F2EA9E00A3EBE8 /* NotificationCenter.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -367,6 +396,7 @@
 		B94EEE30289D4B5C0047D590 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B927B8C329056BDA00F9614D /* EditReminderViewController */,
 				B9DB046528D8868A00A78C84 /* RepeatViewController */,
 				B94EEE7628AE443C0047D590 /* ReminderViewController */,
 				B94EEE3F289D4D640047D590 /* HealthViewController */,
@@ -484,6 +514,7 @@
 			children = (
 				B94EEE7228AA78310047D590 /* HealthCollectionViewCell.swift */,
 				B9BB12FC28EDB74A00F044D3 /* HealthTableViewCell.swift */,
+				B9BB130C28F072EE00F044D3 /* HealthReminderTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -501,9 +532,9 @@
 		B99B28D128DA178B00E8BA55 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				B9BB12EB28DF7C3D00F044D3 /* SFProText-Regular.otf */,
-				B9BB12EC28DF7C3D00F044D3 /* SFProText-Semibold.otf */,
-				B9BB12ED28DF7C3D00F044D3 /* SF-Pro.ttf */,
+				67C997A228F1D57A0046BB11 /* SF-Pro.ttf */,
+				B9BB130628F0719E00F044D3 /* SFProText-Regular.otf */,
+				B9BB130728F0719E00F044D3 /* SFProText-Semibold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -578,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DB045328C76FE400A78C84 /* NewDog.swift */,
+				B9BB131428F2361200F044D3 /* Reminder.swift */,
 			);
 			path = EntityRealm;
 			sourceTree = "<group>";
@@ -586,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DB045628C77D4400A78C84 /* NewDogServices.swift */,
+				B9BB131228F2360300F044D3 /* ReminderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -662,6 +695,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = B94EEDEE289D45EF0047D590;
 			productRefGroup = B94EEDF8289D45F00047D590 /* Products */;
@@ -679,10 +713,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B94EEE07289D45F10047D590 /* LaunchScreen.storyboard in Resources */,
-				B9BB12F028DF7C3D00F044D3 /* SF-Pro.ttf in Resources */,
+				67C997A328F1D57A0046BB11 /* SF-Pro.ttf in Resources */,
 				B94EEE04289D45F10047D590 /* Assets.xcassets in Resources */,
-				B9BB12EF28DF7C3D00F044D3 /* SFProText-Semibold.otf in Resources */,
-				B9BB12EE28DF7C3D00F044D3 /* SFProText-Regular.otf in Resources */,
+				B95AD6AE28F4620B00A3EBE8 /* Localizable.strings in Resources */,
+				B9BB130928F0719E00F044D3 /* SFProText-Regular.otf in Resources */,
+				B9BB130A28F0719E00F044D3 /* SFProText-Semibold.otf in Resources */,
 				B94EEE02289D45F00047D590 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,12 +773,15 @@
 			files = (
 				B94EEE7828AE44470047D590 /* ReminderViewController.swift in Sources */,
 				B9DB045B28CA64D000A78C84 /* SettingsViewModel.swift in Sources */,
+				B927B8C929056C2400F9614D /* EditReminderViewModel.swift in Sources */,
 				B9BB12DE28DF36B500F044D3 /* EditNicknameTableViewCell.swift in Sources */,
 				B94EEE28289D48B70047D590 /* UIView.swift in Sources */,
 				B94EEE5528A3EF970047D590 /* DogAgeCollectionViewCell.swift in Sources */,
 				B94EEE41289D64140047D590 /* MyDogFlowCoordinator.swift in Sources */,
 				B9BB12FD28EDB74A00F044D3 /* HealthTableViewCell.swift in Sources */,
 				B94EEE7A28AE44520047D590 /* ReminderView.swift in Sources */,
+				B927B8C529056BFD00F9614D /* EditReminderViewController.swift in Sources */,
+				B927B8C729056C0E00F9614D /* EditReminderView.swift in Sources */,
 				B9DB045028BA445600A78C84 /* EditProfileDogViewModel.swift in Sources */,
 				B94EEE5C28A67B920047D590 /* BaseTableViewCell.swift in Sources */,
 				B94EEE5A28A433480047D590 /* MyDogsCollectionViewCell.swift in Sources */,
@@ -758,6 +796,7 @@
 				B9BB12E028DF36D500F044D3 /* EditGenderTableViewCell.swift in Sources */,
 				B94EEE5728A3F1FE0047D590 /* BreedsDogCollectionViewCell.swift in Sources */,
 				B94EEE7528AA7ADE0047D590 /* CareArray.swift in Sources */,
+				B95AD6AB28F2EA9E00A3EBE8 /* NotificationCenter.swift in Sources */,
 				B9DB045428C76FE400A78C84 /* NewDog.swift in Sources */,
 				B94EEE1E289D48230047D590 /* CGFloat.swift in Sources */,
 				B94EEE2A289D48D40047D590 /* UILabel.swift in Sources */,
@@ -767,10 +806,12 @@
 				B94EEE6528A901090047D590 /* ListOfDogsView.swift in Sources */,
 				B9DB044E28BA444900A78C84 /* EditProfileDogView.swift in Sources */,
 				B9DB045E28CDF25200A78C84 /* LanguageTableViewCell.swift in Sources */,
+				B9BB131528F2361200F044D3 /* Reminder.swift in Sources */,
 				B94EEE26289D48770047D590 /* Dimension.swift in Sources */,
 				B94EEE22289D48490047D590 /* Array.swift in Sources */,
 				B94EEE3E289D4D610047D590 /* SettingsViewController.swift in Sources */,
 				B94EEE4E28A3C2290047D590 /* BaseCollectionViewCell.swift in Sources */,
+				B9BB131328F2360300F044D3 /* ReminderService.swift in Sources */,
 				B9DB046228CDFE2C00A78C84 /* RateUsAndPrivacyPolicyTableViewCell.swift in Sources */,
 				B94EEE7C28AE44600047D590 /* ReminderViewModel.swift in Sources */,
 				B94EEE4C28A3B16C0047D590 /* AddNewDogViewModel.swift in Sources */,
@@ -783,6 +824,7 @@
 				B94EEE4528A294030047D590 /* MyDogViewModel.swift in Sources */,
 				B94EEE7328AA78310047D590 /* HealthCollectionViewCell.swift in Sources */,
 				B94EEE20289D48370047D590 /* Int.swift in Sources */,
+				B9BB130D28F072EE00F044D3 /* HealthReminderTableViewCell.swift in Sources */,
 				B9DB046E28D8887700A78C84 /* RepeatTableViewCell.swift in Sources */,
 				B94EEE6028A6BC770047D590 /* Dogs.swift in Sources */,
 				B94EEE3B289D4D360047D590 /* HealthViewController.swift in Sources */,
@@ -819,6 +861,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		B95AD6B028F4620B00A3EBE8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B95AD6AF28F4620B00A3EBE8 /* en */,
+				B95AD6B128F4625400A3EBE8 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -826,6 +877,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -886,6 +938,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

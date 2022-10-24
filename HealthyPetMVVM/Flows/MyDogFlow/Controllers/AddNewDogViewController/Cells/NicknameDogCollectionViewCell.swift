@@ -56,14 +56,16 @@ class NicknameDogCollectionViewCell: BaseCollectionViewCell, UIImagePickerContro
     override func configure(item: BaseConfigureCollectionCellRowProtocol) {
         ourDogName.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Как зовут вашу собаку?", letter: 0.38)
         ourDogName.font = UIFont.boldSystemFont(ofSize: CGFloat(20).adaptedFontSize)
+        ourDogName.text = NSLocalizedString("ourDogName", comment: "")
         
         
         centralDogIcon.image = UIImage(named: "centralPawIcon")
-        centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 0.4).cgColor
+        centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 1).cgColor
+        centralDogIcon.contentMode = .scaleAspectFill
         
         centralDogIcon.layer.borderWidth = 4
         //centralDogIcon.layer.cornerRadius = centralDogIcon.bounds.size.height / 2.0
-        centralDogIcon.layer.cornerRadius = 35
+        centralDogIcon.layer.cornerRadius = 39
        
         //centralDogIcon.bounds = centralDogIcon.bounds.insetBy(dx: -4, dy: -4)
         centralDogIcon.clipsToBounds = true
@@ -72,12 +74,15 @@ class NicknameDogCollectionViewCell: BaseCollectionViewCell, UIImagePickerContro
         centralDogIcon.addGestureRecognizer(tapGesture)
         
         addNewDogText.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "Добавьте фото собаки", letter: -0.41)
+        addNewDogText.text = NSLocalizedString("addNewDogText", comment: "")
         
         notNecessaryText.customBlackText(nameFont: "SFProText-Regular", sizeFont: 13, text: "Необязательно", letter: -0.08)
         notNecessaryText.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
         notNecessaryText.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
+        notNecessaryText.text = NSLocalizedString("notNecessaryText", comment: "")
         nameTextField.delegate = self
         nameTextField.placeholder = "Акира"
+        nameTextField.placeholder = NSLocalizedString("nameTextField", comment: "")
         nameTextField.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
         nameTextField.textAlignment = .center
         nameTextField.font = UIFont(name: "", size: CGFloat(17).adaptedFontSize)
@@ -108,7 +113,7 @@ class NicknameDogCollectionViewCell: BaseCollectionViewCell, UIImagePickerContro
         centralDogIcon.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(24.VAdapted)
             make.left.equalTo(contentView.snp.left).offset(32.HAdapted)
-            make.size.equalTo([70, 70].HResized)
+            make.size.equalTo([78, 78].HResized)
         }
         addNewDogText.snp.makeConstraints { make in
             make.left.equalTo(centralDogIcon.snp.right).offset(16.HAdapted)

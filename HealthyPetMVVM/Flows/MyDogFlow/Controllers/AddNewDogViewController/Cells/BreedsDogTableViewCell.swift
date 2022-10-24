@@ -42,9 +42,9 @@ class BreedsDogTableViewCell: BaseTableViewCell {
         configureLayout()
     }
     override func configure(item: BaseConfigureTableCellRowProtocol) {
-        dogBreed.textColor = .black
+        dogBreed.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "", letter: -0.41)
         
-        textLabel?.textColor = .black
+        
         
         if let item = item as? BreedsDogTableViewCellItem {
             
@@ -52,6 +52,17 @@ class BreedsDogTableViewCell: BaseTableViewCell {
             
         }
         
+    }
+    func selectCell() {
+        self.accessoryType = .checkmark
+        self.tintColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+        dogBreed.textColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+    }
+    
+    func deselectCell() {
+        self.accessoryType = .none
+        self.tintColor = .black
+        dogBreed.textColor = .black
     }
     func addSubviews() {
         contentView.addSubview(dogBreed)
@@ -61,6 +72,7 @@ class BreedsDogTableViewCell: BaseTableViewCell {
         dogBreed.snp.makeConstraints { make in
            
             make.left.equalTo(contentView.snp.left).offset(16.VAdapted)
+            make.right.equalTo(contentView.snp.right).offset(16.VAdapted)
             make.centerY.equalToSuperview()
             make.height.equalTo(22.VAdapted)
         }

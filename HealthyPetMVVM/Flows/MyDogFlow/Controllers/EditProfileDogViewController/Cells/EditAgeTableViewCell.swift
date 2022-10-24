@@ -9,15 +9,30 @@ import Foundation
 import UIKit
 import SnapKit
 
-struct EditAgeTableViewCellItem: BaseConfigureTableCellRowProtocol {
+class EditAgeTableViewCellItem: BaseConfigureTableCellRowProtocol {
+    init(){}
     var cellIdentifier = "EditAgeTableViewCellItem"
     var dog: NewDog?
+    var updateDogAgeYearsComplition: ((Int) -> Void)?
+    func updateDogAgeYears(age: Int) {
+        updateDogAgeYearsComplition?(age)
+    }
+    
+    var updateDogAgeMonthComplition: ((Int) -> Void)?
+    func updateDogAgeMonth(age: Int) {
+        updateDogAgeMonthComplition?(age)
+    }
 }
 
 class EditAgeTableViewCell: BaseTableViewCell {
     var item: EditAgeTableViewCellItem?
-     var ageLabel = UILabel()
-     var ageTextLabel = UILabel()
+     var ageLabelText = UILabel()
+     var fullAgeTextLabel = UILabel()
+    
+    var ageLabel = UILabel()
+    var ageTextLabel = UILabel()
+    var monthLabel = UILabel()
+    var monthTextLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,32 +55,64 @@ class EditAgeTableViewCell: BaseTableViewCell {
         configureLayout()
     }
     override func configure(item: BaseConfigureTableCellRowProtocol) {
-        ageLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 13, text: "Возраст", letter: -0.08)
-        ageLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
-        ageLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        ageLabelText.customBlackText(nameFont: "SFProText-Regular", sizeFont: 13, text: "Возраст", letter: -0.08)
+        ageLabelText.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
+        ageLabelText.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
         
-        ageTextLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "1 год 12 месяцев", letter: -0.41)
+        
+        
+        ageLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 20, text: "0", letter: 0.38)
+        ageLabel.textAlignment = .center
+        
+        
+        ageTextLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 15, text: "лет", letter: -0.24)
+        ageTextLabel.textAlignment = .center
+        ageTextLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+        ageTextLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        
+        monthLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 20, text: "0", letter: 0.38)
+        monthLabel.textAlignment = .center
+        
+        monthTextLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 15, text: "месяцев", letter: -0.24)
+        monthTextLabel.textAlignment = .center
+        monthTextLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+        monthTextLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        
+        fullAgeTextLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "\(ageLabel.text) \(ageTextLabel.text) \(monthLabel.text) \(monthTextLabel.text)", letter: -0.41)
         if let item = item as? EditAgeTableViewCellItem {
             self.item = item
             
-            ageTextLabel.text = "\(item.dog?.ageYears ?? 0) год \(item.dog?.ageMonth ?? 0) месяцев"
+            //ageTextLabel.text = "\(item.dog?.ageYears ?? 0) год \(item.dog?.ageMonth ?? 0) месяцев"
+            fullAgeTextLabel.text = "\(item.dog?.ageYears ?? 0) \(ageTextLabel.text ?? "лет") \(item.dog?.ageMonth ?? 0) \(monthTextLabel.text ?? "месяцев")"
             
         }
+        // dog age
+        self.item?.updateDogAgeYearsComplition = { age in
+            self.ageLabel.text = "\(age)"
+            self.fullAgeTextLabel.text = "\(self.ageLabel.text ?? "0") \(self.ageTextLabel.text ?? "лет") \(self.monthLabel.text ?? "0") \(self.monthTextLabel.text ?? "месяцев")"
+            print(age)
+        }
+        self.item?.updateDogAgeMonthComplition = { age in
+            self.monthLabel.text = "\(age)"
+            self.fullAgeTextLabel.text = "\(self.ageLabel.text ?? "0") \(self.ageTextLabel.text ?? "лет") \(self.monthLabel.text ?? "0") \(self.monthTextLabel.text ?? "месяцев")"
+            print(age)
+        }
+        
     }
     func addSubviews() {
-        contentView.addSubview(ageLabel)
-        contentView.addSubview(ageTextLabel)
+        contentView.addSubview(ageLabelText)
+        contentView.addSubview(fullAgeTextLabel)
         
         
     }
     func configureLayout() {
-        ageLabel.snp.makeConstraints { make in
+        ageLabelText.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(8.VAdapted)
             make.left.equalTo(contentView.snp.left).offset(16.HAdapted)
             make.right.equalTo(contentView.snp.right).offset(-16.HAdapted)
-            make.bottom.equalTo(ageTextLabel.snp.top).offset(-4.VAdapted)
+            make.bottom.equalTo(fullAgeTextLabel.snp.top).offset(-4.VAdapted)
         }
-        ageTextLabel.snp.makeConstraints { make in
+        fullAgeTextLabel.snp.makeConstraints { make in
             make.left.equalTo(contentView.snp.left).offset(16.HAdapted)
             make.right.equalTo(contentView.snp.right).offset(-16.HAdapted)
             make.bottom.equalTo(contentView.snp.bottom).offset(-8.VAdapted)

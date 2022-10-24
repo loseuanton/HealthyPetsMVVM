@@ -15,6 +15,11 @@ class ListOfDogsViewController: UIViewController {
     var items: [BaseConfigureTableCellRowProtocol] = []
     
     
+    // TODO: вопрос 3 по выбору породы
+    var selectDog: String?
+    var doneSelectDog: ((String?)->Void)?
+    var completionHendler: ((String) -> Void)?
+    private var filterData: [String]!
     
     
     override func loadView() {
@@ -48,7 +53,16 @@ class ListOfDogsViewController: UIViewController {
         rigthBarButton.tintColor = .clear
         self.navigationItem.rightBarButtonItem = rigthBarButton
         navigationItem.title = "Порода"
+        
+        rootView.rightBarButton.addTarget(self, action: #selector(didSelectDone), for: .touchUpInside)
     }
+    
+    // TODO: вопрос 3 по выбору породы
+    @objc func didSelectDone() {
+        doneSelectDog?(selectDog)
+        self.dismiss(animated: true)
+    }
+    
     func bindingViewModel() {
         viewModel.complitionTableLoadData = { [weak self] items in
             self?.items = items
@@ -61,7 +75,6 @@ class ListOfDogsViewController: UIViewController {
 extension ListOfDogsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         
         return items.count
         
@@ -86,18 +99,33 @@ extension ListOfDogsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = items[indexPath.row] as? ListOfDogsTableViewCellItem {
             let dog = item.listOfDog?.name
+            
+            selectDog = dog
             //let dogName = dog?.name
             print(dog)
             
             
         }
+        if let item = items[indexPath.row] as? ListOfDogsTableViewCellItem {
+            let dog = item.listOfDog?.name
+            
+            
+            completionHendler?(dog ?? "")
+            print("\(dog) select new breed")
+        }
         
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        tableView.cellForRow(at: indexPath)?.tintColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+        
+        // TODO: вопрос 4 по смене цвета текста
+        if let cell = tableView.cellForRow(at: indexPath) as? ListOfDogsTableViewCell {
+            cell.selectCell()
+        }
         
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        // TODO: вопрос 4 по смене цвета текста
+        if let cell = tableView.cellForRow(at: indexPath) as? ListOfDogsTableViewCell {
+            cell.deselectCell()
+        }
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
@@ -105,21 +133,7 @@ extension ListOfDogsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-/*
- extension ListOfDogsViewController: UISearchBarDelegate {
- func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+
  
- rootView.filterData = []
- if searchText == "" {
- 
- }
- for word in items {
- if word.uppercased().contains(searchText.uppercased()) {
- rootView.filterData.append(word)
- }
- }
- self.rootView.listOfDogsTableView.reloadData()
- }
- }
- */
 

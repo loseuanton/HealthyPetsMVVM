@@ -12,7 +12,7 @@ import SnapKit
 struct BreedsDogCollectionViewCellItem: BaseConfigureCollectionCellRowProtocol {
     var cellIdentifier = "BreedsDogCollectionViewCellItem"
     var changeDogBreed: ((String) -> Void)?
-    var openListDogs: (() -> Void)?
+    var openListDogs: (( ((String?)->Void)? ) -> Void)?
     
 }
 
@@ -22,8 +22,8 @@ class BreedsDogCollectionViewCell: BaseCollectionViewCell {
     let viewModel = AddNewDogViewModel()
     
    
-    
-    
+    // TODO: вопрос 3 по выбору породы
+    var dogName: String?
     
     
     var dogBreed = UILabel()
@@ -78,6 +78,8 @@ class BreedsDogCollectionViewCell: BaseCollectionViewCell {
     }
     
     func addSubviews() {
+        breedsDogTableView.removeFromSuperview()
+        dogBreed.removeFromSuperview()
         contentView.addSubview(dogBreed)
         contentView.addSubview(breedsDogTableView)
         
@@ -106,6 +108,7 @@ extension BreedsDogCollectionViewCell: UITableViewDataSource, UITableViewDelegat
         if section == 0 {
             self.layer.cornerRadius = 10
             self.clipsToBounds = true
+            self.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
            return items.count
         } else {
             
@@ -115,15 +118,33 @@ extension BreedsDogCollectionViewCell: UITableViewDataSource, UITableViewDelegat
         
         
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastCell = indexPath.row == items.count - 1
+        let defaultInset = tableView.separatorInset
+        
+        if isLastCell {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.width, bottom: 0, right: 0)
+        } else {
+            cell.separatorInset = defaultInset
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item: BaseConfigureTableCellRowProtocol = items[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier, for: indexPath) as? BaseTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier, for: indexPath) as? BreedsDogTableViewCell {
             if indexPath.section == 0 {
                 cell.configure(item: item)
+                cell.accessoryType = .none
+                if indexPath.row == 3 {
+                    cell.layer.cornerRadius = 10
+                    cell.clipsToBounds = true
+                    cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+                }
+                
             } else {
-                cell.textLabel?.text = "У меня другая порода"
-                cell.textLabel?.textColor = .black
+                // TODO: вопрос 3 по выбору породы
+                cell.dogBreed.text = dogName ?? "У меня другая порода"
+                cell.dogBreed.textColor = .black
                 cell.accessoryType = .disclosureIndicator
                 cell.layer.cornerRadius = 10
                 cell.clipsToBounds = true
@@ -143,8 +164,13 @@ extension BreedsDogCollectionViewCell: UITableViewDataSource, UITableViewDelegat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            self.item?.openListDogs?()
-            
+            // TODO: вопрос 3 по выбору породы
+            let complition = { [weak self] dogName in
+                self?.dogName = dogName
+                self?.breedsDogTableView.reloadData()
+                self?.item?.changeDogBreed?(dogName ?? "Другая порода")
+            }
+            self.item?.openListDogs?(complition)
         } else {
             if let item = items[indexPath.row] as? BreedsDogTableViewCellItem {
                 let dog = item.dog
@@ -153,13 +179,16 @@ extension BreedsDogCollectionViewCell: UITableViewDataSource, UITableViewDelegat
                 print(dogName)
             }
             
+
         }
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        tableView.cellForRow(at: indexPath)?.tintColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
-        
+        if let cell = tableView.cellForRow(at: indexPath) as? BreedsDogTableViewCell {
+            cell.selectCell()
+        }
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        if let cell = tableView.cellForRow(at: indexPath) as? BreedsDogTableViewCell {
+            cell.deselectCell()
+        }
         
     }
     

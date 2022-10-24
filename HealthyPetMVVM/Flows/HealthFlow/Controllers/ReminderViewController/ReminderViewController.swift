@@ -7,15 +7,19 @@
 
 import UIKit
 import SnapKit
+import UserNotifications
 
 class ReminderViewController: UIViewController {
     var openRepeatsScreen: (() -> Void)?
-    
+    var natificationCenter = NotificationCenter()
+
     
     // MARK: - Views
     var rootView = ReminderView()
     let viewModel = ReminderViewModel()
     // var items: [BaseConfigureCollectionCellRowProtocol] = []
+    var reminder: Reminder = Reminder()
+    let reminderService = ReminderService()
     
     
     
@@ -28,7 +32,7 @@ class ReminderViewController: UIViewController {
         super.viewDidLoad()
         
         configureView()
-        
+        natificationCenter.notification()
         
         
     }
@@ -55,6 +59,10 @@ class ReminderViewController: UIViewController {
         leftBarButton.tintColor = .clear
         self.navigationItem.leftBarButtonItem = leftBarButton
         rootView.leftBarButton.addTarget(self, action: #selector(closeScreen), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: rootView.rightBarButton)
+        rightBarButton.tintColor = .clear
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        rootView.rightBarButton.addTarget(self, action: #selector(saveReminder), for: .touchUpInside)
         let stackView = UIStackView(arrangedSubviews: [rootView.textView, rootView.dateView, rootView.repeatButton])
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -69,6 +77,9 @@ class ReminderViewController: UIViewController {
         
         
     }
+    func updateRepeatText(text: String) {
+        rootView.repeatTextLabel.text = text
+    }
     @objc func openRepeatScreen() {
         openRepeatsScreen?()
     }
@@ -76,6 +87,19 @@ class ReminderViewController: UIViewController {
     @objc func closeScreen() {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    @objc func saveReminder() {
+        reminder.comment = rootView.textView.text
+        reminder.time = rootView.datePicker.date
+        let data = NSData(data: (rootView.imageReminder.image?.jpegData(compressionQuality: 0.9))!)
+        
+        reminder.reminderIcon = data as Data
+        reminder.action = navigationItem.title ?? "Прививки"
+        reminderService.saveReminder(reminder: reminder)
+        self.navigationController?.popToRootViewController(animated: true)
+        print(reminder.time)
+        print(reminder)
+    }
+    
     
     
     

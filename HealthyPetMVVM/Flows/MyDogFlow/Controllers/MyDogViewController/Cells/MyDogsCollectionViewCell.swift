@@ -72,10 +72,11 @@ class MyDogsCollectionViewCell: BaseCollectionViewCell {
         
         centralDogIcon.image = UIImage(named: "centralPawIcon")
         centralDogIcon.contentMode = .scaleAspectFill
-        centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 0.4).cgColor
-        //centralDogIcon.bounds = centralDogIcon.bounds.insetBy(dx: -4, dy: -4)
+        
+        centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 1).cgColor
+        
         centralDogIcon.layer.borderWidth = 4
-        centralDogIcon.layer.cornerRadius = centralDogIcon.bounds.size.height / 2.0
+        centralDogIcon.layer.cornerRadius = 39 //centralDogIcon.bounds.size.height / 2.0
         centralDogIcon.clipsToBounds = true
         
         if let item = item as? MyDogsCollectionViewCellItem {
@@ -92,7 +93,7 @@ class MyDogsCollectionViewCell: BaseCollectionViewCell {
             ageLabel.text = "\(String(describing: item.newDog?.ageYears ?? 0)) \(ageText.text ?? "лет") \(String(describing: item.newDog?.ageMonth ?? 0)) месяцев"
             centralDogIcon.image = UIImage(data: item.newDog!.imageDog as Data)
             
-            
+           
             
         }
         
@@ -126,10 +127,12 @@ class MyDogsCollectionViewCell: BaseCollectionViewCell {
         centralDogIcon.snp.makeConstraints { make in
             make.top.equalTo(ageLabel.snp.bottom).offset(24.VAdapted)
             make.centerX.equalToSuperview()
-            make.size.equalTo([70,70].HResized)
+            make.size.equalTo([78,78].HResized)
         }
         
         
+        
     }
+    
 }
 

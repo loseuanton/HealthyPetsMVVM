@@ -13,7 +13,8 @@ import UIKit
 class AddNewDogViewModel {
     var complitionLoadData: (([BaseConfigureCollectionCellRowProtocol]) -> Void)?
     var complitionTableLoadData: (([BaseConfigureTableCellRowProtocol]) -> Void)?
-    var openListOfDogs: (() -> Void)?
+    var openListOfDogs: (( ((String?)->Void)? ) -> Void)?
+    // TODO: вопрос 3 по выбору породы
     var changeDogImage: (( ((UIImage?) -> Void)? )  -> Void)?
     var dog: Dogs?
     var newDog: NewDog = NewDog()
@@ -74,9 +75,9 @@ class AddNewDogViewModel {
     }
     func generateBreedsDogCollectionViewCellItem() -> BreedsDogCollectionViewCellItem {
         var item = BreedsDogCollectionViewCellItem()
-        
-        item.openListDogs = { [weak self] in
-            self?.openListOfDogs?()
+        // TODO: вопрос 3 по выбору породы
+        item.openListDogs = { [weak self] complition in
+            self?.openListOfDogs?(complition)
         }
         item.changeDogBreed = { [weak self] breedDog in
             self?.newDog.breed = breedDog

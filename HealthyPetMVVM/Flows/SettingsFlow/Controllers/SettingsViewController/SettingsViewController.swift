@@ -55,6 +55,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return items.count
    
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastCell = indexPath.row == items.count - 1
+        let defaultInset = tableView.separatorInset
+        
+        if isLastCell {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.width, bottom: 0, right: 0)
+        } else {
+            cell.separatorInset = defaultInset
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item: BaseConfigureTableCellRowProtocol = items[indexPath.row]
@@ -62,7 +72,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.accessoryType = .disclosureIndicator
             cell.configure(item: item)
-            
+            //cell.separatorInset = UIEdgeInsets.zero
             
             return cell
         }

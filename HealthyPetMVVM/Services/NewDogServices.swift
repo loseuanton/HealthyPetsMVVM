@@ -35,6 +35,9 @@ class NewDogServices {
                 editDog.name = newDog.name
                 editDog.imageDog = newDog.imageDog
                 editDog.gender = newDog.gender
+                editDog.ageYears = newDog.ageYears
+                editDog.ageMonth = newDog.ageMonth
+                editDog.breed = newDog.breed
             })
         }
     }

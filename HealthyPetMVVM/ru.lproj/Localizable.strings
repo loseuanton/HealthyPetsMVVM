@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  HealthyPetMVVM
+
+  Created by ANTON LOSEU on 10.10.22.
+  
+*/
+
+
+"ourDogName" = "Как зовут вашу собаку?";
+"addNewDogText" = "Добавьте фото собаки";
+"notNecessaryText" = "Необязательно";
+"nameTextField" = "Акира";
+"leftBarButton" = " Назад";
+
+"leftBarButtonMyDog" = " Собака";
+
+"myDog" = "Моя Собака";
+"health" = "Здоровье";
+"settings" = "Настройки";

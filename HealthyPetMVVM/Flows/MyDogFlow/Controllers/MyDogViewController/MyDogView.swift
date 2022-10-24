@@ -38,6 +38,7 @@ class MyDogView: UIView {
         
         leftBarButton.setImage(UIImage(named: "plusDogBarButton"), for: .normal)
         leftBarButton.setTitle(" Собака", for: .normal)
+        leftBarButton.setTitle(NSLocalizedString("leftBarButtonMyDog", comment: ""), for: .normal)
         leftBarButton.setTitleColor(UIColor.black, for: .normal)
         leftBarButton.layer.cornerRadius = 15
         leftBarButton.clipsToBounds = true

@@ -19,14 +19,26 @@ class AddNewDogView: UIView {
     var leftButtonForPageControl =  UIButton()
     var rightButtonForPageControl =  UIButton()
     var layout =  UICollectionViewFlowLayout()
+    var leftDogImage = UIImageView()
+    var rightDogImage = UIImageView()
+    var textForPickerView = UILabel()
     var currentPage = 0
+    var statePicker = 0
     var newDogCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     func decorate() {
+        
+        textForPickerView.customBlackText(nameFont: "SFProDisplay-Regular", sizeFont: 23, text: "", letter: 0.7)
+        //textForPickerView.textAlignment = .left
+        
         self.backgroundColor = UIColor(red: 0.921, green: 0.921, blue: 0.921, alpha: 1)
         
         picker.backgroundColor = .white
         
+        leftDogImage.image = UIImage(named: "leftDogImage")
+        leftDogImage.contentMode = .scaleAspectFit
+        rightDogImage.image = UIImage(named: "rightDogImage")
+        rightDogImage.contentMode = .scaleAspectFit
         
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 50
@@ -35,6 +47,7 @@ class AddNewDogView: UIView {
         //leftBarButton.setImage(UIImage(named: "chevronLeft"), for: .normal)
         leftBarButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         leftBarButton.setTitle(" Назад", for: .normal)
+        leftBarButton.setTitle(NSLocalizedString("leftBarButton", comment: ""), for: .normal)
         leftBarButton.setTitleColor(UIColor.black, for: .normal)
         leftBarButton.tintColor = .black
         leftBarButton.layer.cornerRadius = 15
@@ -68,6 +81,9 @@ class AddNewDogView: UIView {
         backgroundView.addSubview(rightButtonForPageControl)
         backgroundView.addSubview(leftButtonForPageControl)
         backgroundView.addSubview(newDogCollectionView)
+        self.addSubview(leftDogImage)
+        self.addSubview(rightDogImage)
+        self.addSubview(picker)
     }
     func configureLayout() {
         backgroundView.snp.makeConstraints { make in
@@ -110,6 +126,65 @@ class AddNewDogView: UIView {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(backgroundView.snp.bottom).offset(-102.VAdapted)
             make.size.equalTo([390, 340].HResized)
+        }
+        leftDogImage.snp.makeConstraints { make in
+            make.left.equalTo(self.snp.left).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            make.size.equalTo([128, 191].HResized)
+        }
+        rightDogImage.snp.makeConstraints { make in
+            make.right.equalTo(self.snp.right).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            make.size.equalTo([149, 292].HResized)
+        }
+        
+        picker.snp.makeConstraints { make in
+            make.height.equalTo(250.VAdapted)
+            make.left.equalTo(self.snp.left).offset(0.HAdapted)
+            make.right.equalTo(self.snp.right).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            
+        }
+    }
+    func changeStatePicker() {
+        self.statePicker = (self.statePicker + 1) % 2
+        UIView.animate(withDuration: 0.2) {
+            self.updatePickerConstraint()
+            self.layoutIfNeeded()
+        }
+    }
+    func updatePickerConstraint() {
+        if self.statePicker == 0 {
+            picker.snp.remakeConstraints { make in
+                make.height.equalTo(0.VAdapted)
+                make.left.equalTo(self.snp.left).offset(0.HAdapted)
+                make.right.equalTo(self.snp.right).offset(0.HAdapted)
+                make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+                
+            }
+        } else {
+            picker.snp.remakeConstraints { make in
+                make.height.equalTo(216.VAdapted)
+                make.left.equalTo(self.snp.left).offset(0.HAdapted)
+                make.right.equalTo(self.snp.right).offset(0.HAdapted)
+                make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            }
+        }
+    }
+    func pickerOff() {
+        self.statePicker = 0
+        UIView.animate(withDuration: 0.2) {
+            self.closedPicker()
+            self.layoutIfNeeded()
+        }
+    }
+    func closedPicker() {
+        picker.snp.remakeConstraints { make in
+            make.height.equalTo(0.VAdapted)
+            make.left.equalTo(self.snp.left).offset(0.HAdapted)
+            make.right.equalTo(self.snp.right).offset(0.HAdapted)
+            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
+            
         }
     }
     

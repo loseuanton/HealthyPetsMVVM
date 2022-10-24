@@ -9,9 +9,14 @@ import Foundation
 import UIKit
 
 class HealthViewModel {
+    var newTitle: ((String, UIImage?) -> Void)?
+    var reminder: Reminder = Reminder()
+    var reminderService = ReminderService()
+    var natificationCenter = NotificationCenter()
+   
+    
     var complitionLoadData: (([BaseConfigureCollectionCellRowProtocol], [BaseConfigureCollectionCellRowProtocol]) -> Void)?
     var complitionTableLoadData: (([BaseConfigureTableCellRowProtocol]) -> Void)?
-    
     func loadCells() {
         let healthCollectionViewCellItem = self.generateHealthCollectionViewCellItem()
         let healthCollectionViewCellItem2 = self.generateHealthCollectionViewCellItem2()
@@ -57,16 +62,39 @@ class HealthViewModel {
     }
     func loadTableCells() {
         let healthTableViewCellItem = self.generateHealthTableViewCellItem()
+        let healthReminderTableViewCellItem = self.generateHealthReminderTableViewCellItem()
+        self.complitionTableLoadData?([healthTableViewCellItem] + healthReminderTableViewCellItem)
         
-        self.complitionTableLoadData?([healthTableViewCellItem])
+    }
+    func generateHealthTableViewCellItem() -> HealthTableViewCellItem {
+       var item = HealthTableViewCellItem()
+        item.newTitle = { [weak self] title, image in
+            self?.newTitle?(title, image)
+        }
         
+        print(self.reminder.reminderIcon)
+        return item
+        
+    }
+    func generateHealthReminderTableViewCellItem() -> [HealthReminderTableViewCellItem] {
+        var items: [HealthReminderTableViewCellItem] = []
+        
+        let reminder = reminderService.getReminder()
+        reminder.forEach { reminder in
+            var item = HealthReminderTableViewCellItem()
+            item.reminder = reminder
+            let dateForrmater = DateFormatter()
+            dateForrmater.dateFormat = "dd MMMM, HH:mm"
+            let timeString = dateForrmater.string(from: item.reminder?.time ?? Date())
+            item.natificationCenter.sendNotifications(title: "\(item.reminder?.action ?? "Уведомление")",body: timeString, date: item.reminder?.time ?? Date())
+            items.append(item)
+        }
+        
+        
+        return items
     }
     
-    func generateHealthTableViewCellItem() -> HealthTableViewCellItem {
-        
-        var item = HealthTableViewCellItem()
-        return item
-    }
+    
 
     
     

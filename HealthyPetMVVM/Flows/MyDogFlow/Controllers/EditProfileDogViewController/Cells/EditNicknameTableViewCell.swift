@@ -48,6 +48,7 @@ class EditNicknameTableViewCell: BaseTableViewCell {
         nameTextField.font = UIFont(name: "SFProText-Regular", size: CGFloat(17).adaptedFontSize)
         nameTextField.text = "кличка"
         nameTextField.textColor = .black
+        nameTextField.delegate = self
         nameTextField.addTarget(self, action: #selector(changeEditDogName), for: .editingChanged)
         
         
@@ -80,9 +81,11 @@ class EditNicknameTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(nameTextField.snp.top).offset(-4.VAdapted)
         }
     }
-    
-    
-    
-    
+}
+extension EditNicknameTableViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        return true
+    }
 }
 
