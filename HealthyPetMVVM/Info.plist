@@ -8,11 +8,7 @@
 		<string>SFProText-Regular.otf</string>
 		<string>SF-Pro.ttf</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Used photo</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDarkContent</string>
 </dict>
 </plist>

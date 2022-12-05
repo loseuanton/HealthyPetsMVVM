@@ -8,11 +8,12 @@
 import UIKit
 
 class HealthViewController: UIViewController {
+    var openHistoryReminderScreen: (() -> Void)?
     var openEditReminderScreen: ((Reminder) -> Void)?
     var items: [BaseConfigureTableCellRowProtocol] = []
     var rootView = HealthView()
     let viewModel = HealthViewModel()
-    
+    let reminderService = ReminderService()
     var newTitle: ((String, UIImage?) -> Void)?
     
     
@@ -51,6 +52,10 @@ class HealthViewController: UIViewController {
         rootView.addSubviews()
         rootView.configureLayout()
         rootView.decorate()
+        let rigthBarButton = UIBarButtonItem(customView: rootView.rightBarButton)
+        rigthBarButton.tintColor = .clear
+        self.navigationItem.rightBarButtonItem = rigthBarButton
+        rootView.rightBarButton.addTarget(self, action: #selector(openHistoryReminder), for: .touchUpInside)
         navigationItem.title = "Здоровье"
     }
     
@@ -61,6 +66,35 @@ class HealthViewController: UIViewController {
             
         }
     }
+    @objc func openHistoryReminder() {
+        openHistoryReminderScreen?()
+    }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let swipeSuccess = UIContextualAction(style: .normal, title: "Завершенно") { action, view, success in
+//            print("success")
+//
+//
+//
+//        }
+//        swipeSuccess.backgroundColor = .blue
+//        swipeSuccess.image = UIImage(systemName: "plus")
+//
+//        let swipeDelete = UIContextualAction(style: .normal, title: "Удалить") { action, view, success in
+//            print("Delete")
+//        }
+//        swipeDelete.backgroundColor = .red
+//        swipeDelete.image = UIImage(systemName: "plus")
+//        let config = UISwipeActionsConfiguration(actions: [swipeSuccess, swipeDelete])
+//        config.performsFirstActionWithFullSwipe = false
+//        if indexPath.row == 0 {
+//            return nil
+//        } else {
+//            return config
+//        }
+//
+//    }
+   
 }
 extension HealthViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -76,7 +110,7 @@ extension HealthViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier, for: indexPath) as? BaseTableViewCell {
            
             cell.configure(item: item)
-            
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
@@ -85,6 +119,7 @@ extension HealthViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item: HealthReminderTableViewCellItem = items[indexPath.row] as? HealthReminderTableViewCellItem {
             print(item.reminder)
+            
             if let reminder = item.reminder {
                 self.openEditReminderScreen?(reminder)
             }

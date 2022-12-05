@@ -8,6 +8,15 @@
 import Foundation
 import RealmSwift
 
+//protocol NewDogProtocol {
+//    func saveNewDog(newDog: NewDog)
+//}
+//
+//protocol DogsDataSourceProtocol {
+//    func saveNewDog(newDog: NewDog)
+//    func removeDog(dog: NewDog)
+//}
+
 class NewDogServices {
     var realm = try! Realm()
     
@@ -37,7 +46,10 @@ class NewDogServices {
                 editDog.gender = newDog.gender
                 editDog.ageYears = newDog.ageYears
                 editDog.ageMonth = newDog.ageMonth
+                editDog.animalDogOrCat = newDog.animalDogOrCat
                 editDog.breed = newDog.breed
+                editDog.imagePassport = newDog.imagePassport
+                editDog.imageMedicalBook = newDog.imageMedicalBook
             })
         }
     }

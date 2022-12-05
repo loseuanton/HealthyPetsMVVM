@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var tabBarControllers: MyDogFlowCoordinator?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+       // FirebaseApp.configure()
+        GMSServices.provideAPIKey("AIzaSyB1ulq37okR2bEyNUZxPHeZz04hdGaFQwI")
+        if UserDefaults.standard.hasOnboarded {
+            initionalCoordinator()
+        } else {
+            
+            onboardingFlow()
+        }
         
-        initionalCoordinator()
+        
         return true
     }
 
@@ -34,7 +44,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarControllers = MyDogFlowCoordinator(tabBarController: tabBarController)
         tabBarControllers?.start()
     }
+    func onboardingFlow() {
+        window = UIWindow()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var vc: UIViewController
+        vc = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController")
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+    }
 
 
+}
+extension UserDefaults {
+    private enum UserDefaultsKeys: String {
+        case hasOnboarded
+    }
+    var hasOnboarded: Bool {
+        get {
+            bool(forKey: UserDefaultsKeys.hasOnboarded.rawValue)
+        }
+        set {
+            setValue(newValue, forKey: UserDefaultsKeys.hasOnboarded.rawValue)
+        }
+    }
 }
 

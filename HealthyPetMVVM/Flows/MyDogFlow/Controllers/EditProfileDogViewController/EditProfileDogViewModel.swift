@@ -50,7 +50,6 @@ class EditProfileDogViewModel {
         item.dog = editDogCopy
         item.changeEditDogName = { [weak self] editDogName in
             self?.editDogCopy?.name = editDogName
-            print(self?.editDogCopy)
         }
         return item
         

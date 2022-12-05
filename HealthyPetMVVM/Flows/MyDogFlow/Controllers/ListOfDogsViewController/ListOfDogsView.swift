@@ -15,7 +15,8 @@ class ListOfDogsView: UIView {
     var leftBarButton = UIButton()
     var rightBarButton = UIButton()
     var searchBar = UISearchBar()
-    var listOfDogsTableView = UITableView()
+    var listOfDogsTableView = UITableView() // private
+    var currentPetType: PetType?
     func decorate() {
         self.backgroundColor = .white
         leftBarButton.setTitle("Отмена", for: .normal)

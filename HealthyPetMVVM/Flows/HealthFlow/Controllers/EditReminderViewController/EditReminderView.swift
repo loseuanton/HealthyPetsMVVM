@@ -12,7 +12,7 @@ import SnapKit
 
 
 class EditReminderView: UIView {
-    
+    // MARK: - Views
     var backgroundView = UIView()
     var commentLabel = UILabel()
     var textView = UITextView()
@@ -26,12 +26,13 @@ class EditReminderView: UIView {
     var imageReminder = UIImageView()
    
    
-    
+    // MARK: - Decorate Views
     func decorate() {
         rightBarButton.setTitle("Готово", for: .normal)
         rightBarButton.tintColor = .black
         rightBarButton.setTitleColor(UIColor.black, for: .normal)
-        rightBarButton.setTitleColor(UIColor.blue, for: .selected)
+        rightBarButton.setTitleColor( UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), for: .highlighted)
+        
         
         commentLabel.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 17, text: "Комментарий", letter: -0.41)
         commentLabel.textAlignment = .left
@@ -39,9 +40,9 @@ class EditReminderView: UIView {
        
         leftBarButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         leftBarButton.setTitle(" Назад", for: .normal)
+        leftBarButton.setTitleColor( UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), for: .highlighted)
         leftBarButton.tintColor = .black
         leftBarButton.setTitleColor(UIColor.black, for: .normal)
-        leftBarButton.setTitleColor(UIColor.blue, for: .selected)
         
         
         textView.layer.cornerRadius = 13
@@ -59,23 +60,32 @@ class EditReminderView: UIView {
         dateLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "Дата", letter: -0.41)
         
         //datePicker.locale = Locale(identifier: "en_GB")
-        let localeID = Locale.preferredLanguages.first
-            datePicker.locale = Locale(identifier: localeID!)
+        if let localeID = Locale.preferredLanguages.first {
+            datePicker.locale = Locale(identifier: localeID)
+        }
+        datePicker.tintColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
         
         
         
         completeButton.setTitle("Завершить", for: .normal)
         completeButton.setTitleColor(UIColor.white, for: .normal)
         completeButton.backgroundColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+        
+        completeButton.setBackgroundColor(color: UIColor(red: 0.635, green: 0.492, blue: 1, alpha: 1), forState: .highlighted)
         completeButton.layer.cornerRadius = 13
         
         deleteReminderButton.setTitle("Удалить напоминание", for: .normal)
         deleteReminderButton.setTitleColor(UIColor(red: 1, green: 0.231, blue: 0.188, alpha: 1), for: .normal)
+        //deleteReminderButton.setTitleColor(.black, for: .highlighted)
+        deleteReminderButton.setBackgroundColor(color: UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), forState: .highlighted)
+        
         deleteReminderButton.backgroundColor = .white
         deleteReminderButton.layer.cornerRadius = 13
         
         
+        
     }
+    // MARK: - Add Subviews
     func addSubviews() {
         self.addSubview(backgroundView)
         backgroundView.addSubview(commentLabel)
@@ -84,6 +94,7 @@ class EditReminderView: UIView {
         
         
     }
+    // MARK: - Layout
     func configureLayout() {
         backgroundView.snp.makeConstraints { make in
             make.top.bottom.right.left.equalToSuperview()

@@ -8,5 +8,11 @@ target 'HealthyPetMVVM' do
   # Pods for HealthyPetMVVM
 pod 'SnapKit', '~> 5.6.0'
 pod 'RealmSwift'
-
+pod 'Cosmos'
+pod 'GoogleMaps'
+pod 'Google-Maps-iOS-Utils', '~> 4.1.0'
+pod 'Firebase/Analytics'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
+pod 'Firebase/Firestore'
 end

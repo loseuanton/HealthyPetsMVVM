@@ -48,7 +48,8 @@ class ListOfDogsTableViewCell: BaseTableViewCell {
             self.item = item
             
             self.dogNicknameLabel.text = item.listOfDog?.name
-            print(item.listOfDog?.name)
+            //print(item.listOfDog?.name)
+            
         }
     }
     
@@ -74,7 +75,7 @@ class ListOfDogsTableViewCell: BaseTableViewCell {
     func configureLayout() {
         dogNicknameLabel.snp.makeConstraints { make in
             make.left.equalTo(self).offset(16.HAdapted)
-            make.right.equalTo(self).offset(-16.HAdapted)
+            make.right.equalTo(contentView.snp.right).offset(-32.HAdapted)
             make.height.equalTo(22.VAdapted)
             make.centerY.equalToSuperview()
         }

@@ -12,13 +12,13 @@ import UIKit
 
 class AddNewDogViewModel {
     var complitionLoadData: (([BaseConfigureCollectionCellRowProtocol]) -> Void)?
-    var complitionTableLoadData: (([BaseConfigureTableCellRowProtocol]) -> Void)?
-    var openListOfDogs: (( ((String?)->Void)? ) -> Void)?
-    // TODO: вопрос 3 по выбору породы
+    var openListOfBreeds: ((PetType) -> Void)?
+    var changeBreedText: ((String) -> Void)?
     var changeDogImage: (( ((UIImage?) -> Void)? )  -> Void)?
     var dog: Dogs?
     var newDog: NewDog = NewDog()
     let dogAgeItem = DogAgeCollectionViewCellItem()
+    var dogBreedItem = BreedsDogCollectionViewCellItem()
     
     func updateDogYearsAge(age: Int) {
         newDog.ageYears = age
@@ -27,6 +27,10 @@ class AddNewDogViewModel {
     func updateDogMonthAge(age: Int) {
         newDog.ageMonth = age
         dogAgeItem.updateDogAgeMonth(age: age)
+    }
+    func updateDogBreed(breed: String) {
+        newDog.breed = breed
+        dogBreedItem.updateDogBreed(breed: breed)
     }
     
     
@@ -42,69 +46,38 @@ class AddNewDogViewModel {
         var item = NicknameDogCollectionViewCellItem()
         item.changeDogName = { [weak self] dogName in
             self?.newDog.name = dogName
-            print(self?.newDog.name)
             
         }
         item.changeDogImage = changeDogImage
         item.saveDogImage = { [weak self] image in
             let data = NSData(data: (image?.jpegData(compressionQuality: 0.9))!)
             self?.newDog.imageDog = data as Data
-            print(self?.newDog.imageDog)
         }
-        
-        
-        
         return item
     }
     func generateGenderDogCollectionViewCellItem() -> GenderDogCollectionViewCellItem {
         var item = GenderDogCollectionViewCellItem()
         item.changeDogGender = { [weak self] genderDog in
             self?.newDog.gender = genderDog
-            
-            print(self?.newDog.gender)
-            
         }
-        
         return item
-        
-    }
-    func generateDogAgeCollectionViewCellItem() -> DogAgeCollectionViewCellItem {
-        // dog age
-        return dogAgeItem
-        
-    }
-    func generateBreedsDogCollectionViewCellItem() -> BreedsDogCollectionViewCellItem {
-        var item = BreedsDogCollectionViewCellItem()
-        // TODO: вопрос 3 по выбору породы
-        item.openListDogs = { [weak self] complition in
-            self?.openListOfDogs?(complition)
-        }
-        item.changeDogBreed = { [weak self] breedDog in
-            self?.newDog.breed = breedDog
-            print("\(String(describing: self?.newDog))")
-        }
-        
-        return item
-        
-    }
-    func loadTableCells() {
-        let breedsDogTableViewCellItem = self.generateBreedsDogTableViewCellItem()
-        self.complitionTableLoadData?(breedsDogTableViewCellItem)
-        
-    }
-    func generateBreedsDogTableViewCellItem() -> [BreedsDogTableViewCellItem] {
-        var dogsArray: [Dogs] = []
-        dogsArray.append(Dogs(name: "Померанский шпиц"))
-        dogsArray.append(Dogs(name: "Йоркширский терьер"))
-        dogsArray.append(Dogs(name: "Чихуахуа"))
-        dogsArray.append(Dogs(name: "Немецкая овчарка"))
-        var tableItemsArray: [BreedsDogTableViewCellItem] = []
-        for dog in dogsArray {
-            tableItemsArray.append(BreedsDogTableViewCellItem(cellIdentifier: "BreedsDogTableViewCellItem", dog: dog))
-        }
-        return tableItemsArray
-        
     }
     
+    func generateDogAgeCollectionViewCellItem() -> DogAgeCollectionViewCellItem {
+        return dogAgeItem
+    }
+    
+    func generateBreedsDogCollectionViewCellItem() -> BreedsDogCollectionViewCellItem {
+        let item = BreedsDogCollectionViewCellItem()
+        item.changeDogOrCat = { [weak self] dogOrCat in
+            self?.newDog.animalDogOrCat = dogOrCat
+        }
+        item.openListOfBreeds = { [weak self] petType in
+            self?.openListOfBreeds?(petType)
+        }
+        dogBreedItem = item
+        return item
+        
+    }
 }
 

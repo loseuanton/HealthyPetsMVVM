@@ -9,21 +9,24 @@ import UIKit
 import SnapKit
 
 class MyDogViewController: UIViewController {
+    // MARK: - Closure
     var openAddNewDogScreen: (() -> Void)?
     var openEditProfileDogScreen: ((NewDog) -> Void)?
+    var openDocumentsScreen: ((NewDog) -> Void)?
     
-    // MARK: - Views
+    // MARK: - Views and Services
     var rootView = MyDogView()
     let viewModel = MyDogViewModel()
     var items: [BaseConfigureCollectionCellRowProtocol] = []
     var newDogServices = NewDogServices()
     
     
-    
+    // MARK: - Life cycle
     override func loadView() {
         super.loadView()
         self.view = rootView
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +57,13 @@ class MyDogViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    
+    // MARK: - ConfigureView
     func configureView() {
         rootView.addSubviews()
         rootView.configureLayout()
         rootView.decorate()
-        rootView.leftButton.addTarget(self, action: #selector(left), for: .touchUpInside)
-        rootView.rightButton.addTarget(self, action: #selector(right), for: .touchUpInside)
+        rootView.leftButton.addTarget(self, action: #selector(leftButton), for: .touchUpInside)
+        rootView.rightButton.addTarget(self, action: #selector(rightButton), for: .touchUpInside)
         let rigthBarButton = UIBarButtonItem(customView: rootView.rightBarButton)
         rigthBarButton.tintColor = .clear
         self.navigationItem.rightBarButtonItem = rigthBarButton
@@ -72,7 +75,10 @@ class MyDogViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftBarButton
         rootView.leftBarButton.addTarget(self, action: #selector(openAddNewDogController), for: .touchUpInside)
         
+        rootView.documentsButton.addTarget(self, action: #selector(openDocumentsController), for: .touchUpInside)
+        
     }
+    // MARK: - BindingViewModel
     func bindingViewModel() {
         viewModel.complitionLoadData = { [weak self] items in
             self?.items = items
@@ -80,6 +86,7 @@ class MyDogViewController: UIViewController {
             
         }
     }
+    // MARK: - Open new screen
     @objc func openAddNewDogController() {
         openAddNewDogScreen?()
     }
@@ -90,27 +97,44 @@ class MyDogViewController: UIViewController {
            let selectDog = selectItem.newDog {
             
             openEditProfileDogScreen?(selectDog)
-            
-            
         }
     }
-    @objc func left() {
+    @objc func openDocumentsController() {
+        if let currentCenteredPage = currentCenteredPage,
+           items.count > currentCenteredPage,
+           let selectItem = items[currentCenteredPage] as? MyDogsCollectionViewCellItem,
+           let selectDog = selectItem.newDog {
+            openDocumentsScreen?(selectDog)
+        }
+    }
+    // MARK: - Action buttons
+    @objc func leftButton() {
         if rootView.currentPage > 0 {
             rootView.currentPage -= 1
             rootView.myDogsCollectionView.scrollToItem(at: NSIndexPath(row: rootView.currentPage, section: 0) as IndexPath, at: .centeredHorizontally, animated: false)
-            //rootView.myDogsCollectionView.reloadData()
-            
+           
         }
     }
-    @objc func right() {
+//    @objc func rightButton() {
+//        if rootView.currentPage < items.count - 1 {
+//            rootView.currentPage += 1
+//
+//            rootView.myDogsCollectionView.scrollToItem(at: NSIndexPath(row: rootView.currentPage, section: 0) as IndexPath, at: .centeredHorizontally, animated: false)
+//
+//        }
+//    }
+    @objc func rightButton() {
+        if let currentPage = currentCenteredPage {
+            rootView.currentPage = currentPage
+        }
         if rootView.currentPage < items.count - 1 {
             rootView.currentPage += 1
             
-            rootView.myDogsCollectionView.scrollToItem(at: NSIndexPath(row: rootView.currentPage, section: 0) as IndexPath, at: .centeredHorizontally, animated: false)
-            //rootView.myDogsCollectionView.reloadData()
+            rootView.myDogsCollectionView.scrollToItem(at: NSIndexPath(row: rootView.currentPage, section: 0) as IndexPath, at: .centeredHorizontally, animated: true)
             
         }
     }
+    // MARK: - Current centered page
     public var currentCenteredPage: Int? {
         let collectionView = rootView.myDogsCollectionView
         let currentCenteredPoint = CGPoint(x: collectionView.contentOffset.x + collectionView.bounds.width/2, y: collectionView.contentOffset.y + collectionView.bounds.height/2)
@@ -122,10 +146,10 @@ class MyDogViewController: UIViewController {
     
     
     
+    
 }
+// MARK: - extension MyDogViewController
 extension MyDogViewController: UICollectionViewDelegate {
-    
-    
     
 }
 extension MyDogViewController: UICollectionViewDataSource {

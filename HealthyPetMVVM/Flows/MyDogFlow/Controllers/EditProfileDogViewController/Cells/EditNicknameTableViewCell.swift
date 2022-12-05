@@ -19,6 +19,7 @@ class EditNicknameTableViewCell: BaseTableViewCell {
     var item: EditNicknameTableViewCellItem?
     var nameTextField = UITextField()
     var nicknameLabel = UILabel()
+    var rootView = EditProfileDogView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -81,11 +82,17 @@ class EditNicknameTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(nameTextField.snp.top).offset(-4.VAdapted)
         }
     }
+    
 }
 extension EditNicknameTableViewCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameTextField.resignFirstResponder()
         return true
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameTextField.endEditing(true)
+    }
+
+    
 }
 

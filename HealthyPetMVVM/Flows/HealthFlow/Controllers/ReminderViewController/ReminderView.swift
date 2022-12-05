@@ -23,14 +23,18 @@ class ReminderView: UIView {
     var leftBarButton = UIButton()
     var rightBarButton = UIButton()
     var imageReminder = UIImageView()
+    var titleLabel = UILabel()
     var repeatTextLabel = UILabel()
+    var chevronIcon = UIImageView()
    
     
     func decorate() {
         rightBarButton.setTitle("Готово", for: .normal)
         rightBarButton.tintColor = .black
         rightBarButton.setTitleColor(UIColor.black, for: .normal)
-        rightBarButton.setTitleColor(UIColor.blue, for: .selected)
+        rightBarButton.setTitleColor( UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), for: .highlighted)
+        
+      
         
         commentLabel.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 17, text: "Комментарий", letter: -0.41)
         commentLabel.textAlignment = .left
@@ -40,7 +44,7 @@ class ReminderView: UIView {
         leftBarButton.setTitle(" Назад", for: .normal)
         leftBarButton.tintColor = .black
         leftBarButton.setTitleColor(UIColor.black, for: .normal)
-        leftBarButton.setTitleColor(UIColor.blue, for: .selected)
+        leftBarButton.setTitleColor( UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), for: .highlighted)
         
         
         textView.layer.cornerRadius = 13
@@ -58,9 +62,11 @@ class ReminderView: UIView {
         dateLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "Дата", letter: -0.41)
         
         //datePicker.locale = Locale(identifier: "en_GB")
-        let localeID = Locale.preferredLanguages.first
-            datePicker.locale = Locale(identifier: localeID!)
-        
+        if let localeID = Locale.preferredLanguages.first {
+            datePicker.locale = Locale(identifier: localeID)
+        }
+            
+        datePicker.tintColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
         
         repeatButton.setImage(UIImage(named: "repeatButton"), for: .normal)
         repeatButton.contentHorizontalAlignment = .left
@@ -70,9 +76,12 @@ class ReminderView: UIView {
         repeatButton.contentEdgeInsets.left = 16
         repeatButton.titleEdgeInsets.left = 8
         repeatButton.layer.cornerRadius = 13
+        repeatButton.setBackgroundColor(color: UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), forState: .highlighted)
         repeatTextLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 13, text: "Никогда", letter: -0.08)
         repeatTextLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
         repeatTextLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        chevronIcon.image = UIImage(systemName: "chevron.right")
+        chevronIcon.tintColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
         
     }
     func addSubviews() {
@@ -81,6 +90,7 @@ class ReminderView: UIView {
         dateView.addSubview(dateLabel)
         dateView.addSubview(datePicker)
         repeatButton.addSubview(repeatTextLabel)
+        repeatButton.addSubview(chevronIcon)
         
     }
     func configureLayout() {
@@ -112,8 +122,13 @@ class ReminderView: UIView {
         repeatButton.snp.makeConstraints { make in
             make.height.equalTo(60)
         }
+        chevronIcon.snp.makeConstraints { make in
+            make.right.equalTo(repeatButton.snp.right).offset(-19.HAdapted)
+            make.size.equalTo([13, 22].HResized)
+            make.centerY.equalTo(repeatButton.snp.centerY)
+        }
         repeatTextLabel.snp.makeConstraints { make in
-            make.right.equalTo(repeatButton.snp.right).offset(-40.HAdapted)
+            make.right.equalTo(chevronIcon.snp.left).offset(-10.HAdapted)
             make.height.equalTo(18)
             make.centerY.equalTo(repeatButton.snp.centerY)
         }

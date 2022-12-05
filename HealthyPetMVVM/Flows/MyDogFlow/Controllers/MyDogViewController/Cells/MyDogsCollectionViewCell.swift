@@ -29,6 +29,7 @@ class MyDogsCollectionViewCell: BaseCollectionViewCell {
     var ageText = UILabel()
     
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -76,8 +77,10 @@ class MyDogsCollectionViewCell: BaseCollectionViewCell {
         centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 1).cgColor
         
         centralDogIcon.layer.borderWidth = 4
-        centralDogIcon.layer.cornerRadius = 39 //centralDogIcon.bounds.size.height / 2.0
+        centralDogIcon.layer.cornerRadius = 39.HAdapted //centralDogIcon.bounds.size.height / 2.0
         centralDogIcon.clipsToBounds = true
+        
+        
         
         if let item = item as? MyDogsCollectionViewCellItem {
             self.item = item
@@ -91,12 +94,15 @@ class MyDogsCollectionViewCell: BaseCollectionViewCell {
                 ageText.text = "лет"
             }
             ageLabel.text = "\(String(describing: item.newDog?.ageYears ?? 0)) \(ageText.text ?? "лет") \(String(describing: item.newDog?.ageMonth ?? 0)) месяцев"
-            centralDogIcon.image = UIImage(data: item.newDog!.imageDog as Data)
-            
-           
-            
+            if let imageDog = item.newDog?.imageDog {
+                centralDogIcon.image = UIImage(data: imageDog as Data)
+            }
+            if item.newDog?.gender == "Мужской" {
+                centralDogIcon.layer.borderColor = UIColor(red: 0.371, green: 0.736, blue: 1, alpha: 1).cgColor
+            } else {
+                centralDogIcon.layer.borderColor = UIColor(red: 1, green: 0.654, blue: 0.82, alpha: 1).cgColor
+            }
         }
-        
     }
     func addSubviews() {
         contentView.addSubview(nicknameLabel)
@@ -107,30 +113,29 @@ class MyDogsCollectionViewCell: BaseCollectionViewCell {
     func configureLayout() {
         
         nicknameLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(0.VAdapted)
-            make.left.equalTo(contentView).offset(0.HAdapted)
-            make.right.equalTo(contentView).offset(0.HAdapted)
+            make.top.equalTo(contentView.snp.top).offset(0.VAdapted)
+            make.left.equalTo(contentView.snp.left).offset(0.HAdapted)
+            make.right.equalTo(contentView.snp.right).offset(0.HAdapted)
             make.centerX.equalToSuperview()
         }
         breedLabel.snp.makeConstraints { make in
             make.top.equalTo(nicknameLabel.snp.bottom).offset(8.VAdapted)
-            make.left.equalTo(contentView).offset(0.HAdapted)
-            make.right.equalTo(contentView).offset(0.HAdapted)
+            make.left.equalTo(contentView.snp.left).offset(0.HAdapted)
+            make.right.equalTo(contentView.snp.right).offset(0.HAdapted)
             make.centerX.equalToSuperview()
         }
         ageLabel.snp.makeConstraints { make in
             make.top.equalTo(breedLabel.snp.bottom).offset(8.VAdapted)
-            make.left.equalTo(contentView).offset(0.HAdapted)
-            make.right.equalTo(contentView).offset(0.HAdapted)
+            make.left.equalTo(contentView.snp.left).offset(0.HAdapted)
+            make.right.equalTo(contentView.snp.right).offset(0.HAdapted)
             make.centerX.equalToSuperview()
         }
         centralDogIcon.snp.makeConstraints { make in
-            make.top.equalTo(ageLabel.snp.bottom).offset(24.VAdapted)
+            make.top.equalTo(ageLabel.snp.bottom).offset(14.VAdapted)
+            
             make.centerX.equalToSuperview()
-            make.size.equalTo([78,78].HResized)
+            make.size.equalTo([78, 78].HResized)
         }
-        
-        
         
     }
     

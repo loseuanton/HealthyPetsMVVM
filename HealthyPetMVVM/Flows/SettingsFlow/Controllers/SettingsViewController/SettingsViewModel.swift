@@ -13,26 +13,11 @@ class SettingsViewModel {
     
     
     func loadTableCells() {
-        let languageTableViewCellItem = self.generateLanguageTableViewCellItem()
         let rateUsAndPrivacyPolicyTableViewCellItem = self.generateRateUsAndPrivacyPolicyTableViewCellItem()
-        self.complitionTableLoadData?([languageTableViewCellItem] + rateUsAndPrivacyPolicyTableViewCellItem)
+        self.complitionTableLoadData?(rateUsAndPrivacyPolicyTableViewCellItem)
         
     }
     
-    func generateLanguageTableViewCellItem() -> LanguageTableViewCellItem {
-        /*
-        var language: [Language] = []
-        language.append(Language(language: "Язык", selectedLanguage: "Русский"))
-        
-        var tableItemsArray: [LanguageTableViewCellItem] = []
-        for language in language {
-            tableItemsArray.append(LanguageTableViewCellItem(cellIdentifier: "LanguageTableViewCellItem", language: language))
-        }
-        return tableItemsArray
-        */
-        var item = LanguageTableViewCellItem()
-        return item
-    }
     func generateRateUsAndPrivacyPolicyTableViewCellItem() -> [RateUsAndPrivacyPolicyTableViewCellItem] {
         var rateUsAndPrivacyPolicy: [RateUsAndPrivacyPolicy] = []
         rateUsAndPrivacyPolicy.append(RateUsAndPrivacyPolicy(rateUsAndPrivacyPolicy: "Оцените нас"))

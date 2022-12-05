@@ -57,7 +57,7 @@ class DogAgeCollectionViewCell: BaseCollectionViewCell {
         configureLayout()
     }
     override func configure(item: BaseConfigureCollectionCellRowProtocol) {
-        dogAge.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Сколько лет вашей собаке?", letter: 0.38)
+        dogAge.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Сколько лет вашему питомцу?", letter: 0.38)
         dogAge.font = UIFont.boldSystemFont(ofSize: 20)
         
         ageLabel.customBlackText(nameFont: "SFProText-Regular", sizeFont: 20, text: "0", letter: 0.38)

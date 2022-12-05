@@ -93,11 +93,16 @@ extension RepeatViewController: UITableViewDelegate, UITableViewDataSource {
             print(repeats)
             completionHendler?(repeats ?? "")
         }
+        if let cell = tableView.cellForRow(at: indexPath) as? RepeatTableViewCell {
+            cell.selectCell()
+        }
         
         
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-       
+        if let cell = tableView.cellForRow(at: indexPath) as? RepeatTableViewCell {
+            cell.deselectCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

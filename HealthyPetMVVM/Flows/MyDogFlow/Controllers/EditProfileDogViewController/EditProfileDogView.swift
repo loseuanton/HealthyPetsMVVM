@@ -34,18 +34,16 @@ class EditProfileDogView: UIView {
         leftBarButton.setTitle(" Назад", for: .normal)
         leftBarButton.tintColor = .black
         leftBarButton.setTitleColor(UIColor.black, for: .normal)
-        leftBarButton.setTitleColor(UIColor.blue, for: .selected)
-        
+        leftBarButton.setTitleColor( UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), for: .highlighted)
         
         rightBarButton.setTitle("Готово", for: .normal)
         rightBarButton.tintColor = .black
         rightBarButton.setTitleColor(UIColor.black, for: .normal)
-        rightBarButton.setTitleColor(UIColor.blue, for: .selected)
+        rightBarButton.setTitleColor( UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), for: .highlighted)
           
         
         centralDogIcon.image = UIImage(named: "centralPawIcon")
         centralDogIcon.layer.borderColor = UIColor(red: 0.82, green: 0.749, blue: 1, alpha: 1).cgColor
-           // image.bounds = image.bounds.insetBy(dx: -4, dy: -4)
         centralDogIcon.layer.borderWidth = 4
         centralDogIcon.layer.cornerRadius = centralDogIcon.bounds.size.height / 2.0
         centralDogIcon.clipsToBounds = true
@@ -63,11 +61,11 @@ class EditProfileDogView: UIView {
         editProfileTableView.isScrollEnabled = false
         
         deleteProfileButton.setTitle("Удалить профиль", for: .normal)
-        deleteProfileButton.setTitle("Удалить профиль", for: .highlighted)
         deleteProfileButton.setTitleColor(.red, for: .normal)
         deleteProfileButton.layer.cornerRadius = 10
         deleteProfileButton.clipsToBounds = true
         deleteProfileButton.backgroundColor = .white
+        deleteProfileButton.setBackgroundColor(color: UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), forState: .highlighted)
         
     }
     func addSubviews() {

@@ -7,14 +7,14 @@
 */
 
 
-"ourDogName" = "Как зовут вашу собаку?";
-"addNewDogText" = "Добавьте фото собаки";
+"ourDogName" = "Как зовут вашего питомца?";
+"addNewDogText" = "Добавьте фото питомца";
 "notNecessaryText" = "Необязательно";
 "nameTextField" = "Акира";
 "leftBarButton" = " Назад";
 
-"leftBarButtonMyDog" = " Собака";
+"leftBarButtonMyDog" = " Питомец";
 
-"myDog" = "Моя Собака";
+"myDog" = "Моя Питомец";
 "health" = "Здоровье";
 "settings" = "Настройки";

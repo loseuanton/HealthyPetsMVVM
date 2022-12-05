@@ -11,6 +11,7 @@
 		B927B8C529056BFD00F9614D /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927B8C429056BFD00F9614D /* EditReminderViewController.swift */; };
 		B927B8C729056C0E00F9614D /* EditReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927B8C629056C0E00F9614D /* EditReminderView.swift */; };
 		B927B8C929056C2400F9614D /* EditReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927B8C829056C2400F9614D /* EditReminderViewModel.swift */; };
+		B927B8CB2906DE4F00F9614D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927B8CA2906DE4F00F9614D /* UIButton.swift */; };
 		B94EEDFB289D45F00047D590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEDFA289D45F00047D590 /* AppDelegate.swift */; };
 		B94EEE02289D45F00047D590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94EEE00289D45F00047D590 /* Main.storyboard */; };
 		B94EEE04289D45F10047D590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94EEE03289D45F10047D590 /* Assets.xcassets */; };
@@ -39,7 +40,6 @@
 		B94EEE5728A3F1FE0047D590 /* BreedsDogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE5628A3F1FE0047D590 /* BreedsDogCollectionViewCell.swift */; };
 		B94EEE5A28A433480047D590 /* MyDogsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE5928A433480047D590 /* MyDogsCollectionViewCell.swift */; };
 		B94EEE5C28A67B920047D590 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE5B28A67B920047D590 /* BaseTableViewCell.swift */; };
-		B94EEE5E28A67BCD0047D590 /* BreedsDogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE5D28A67BCD0047D590 /* BreedsDogTableViewCell.swift */; };
 		B94EEE6028A6BC770047D590 /* Dogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE5F28A6BC770047D590 /* Dogs.swift */; };
 		B94EEE6328A900FD0047D590 /* ListOfDogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE6228A900FD0047D590 /* ListOfDogsViewController.swift */; };
 		B94EEE6528A901090047D590 /* ListOfDogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE6428A901090047D590 /* ListOfDogsView.swift */; };
@@ -55,6 +55,41 @@
 		B94EEE7C28AE44600047D590 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94EEE7B28AE44600047D590 /* ReminderViewModel.swift */; };
 		B95AD6AB28F2EA9E00A3EBE8 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95AD6AA28F2EA9E00A3EBE8 /* NotificationCenter.swift */; };
 		B95AD6AE28F4620B00A3EBE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B95AD6B028F4620B00A3EBE8 /* Localizable.strings */; };
+		B996E5C42927AD7400AC3342 /* TypesOfServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5C32927AD7400AC3342 /* TypesOfServices.swift */; };
+		B996E5EA293E108C00AC3342 /* AllTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5E9293E108C00AC3342 /* AllTypesViewController.swift */; };
+		B996E5EC293E109600AC3342 /* AllTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5EB293E109600AC3342 /* AllTypesView.swift */; };
+		B996E5EE293E10A000AC3342 /* AllTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5ED293E10A000AC3342 /* AllTypesViewModel.swift */; };
+		B996E5F1293E10C000AC3342 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5F0293E10C000AC3342 /* MapViewController.swift */; };
+		B996E5F3293E10C900AC3342 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5F2293E10C900AC3342 /* MapView.swift */; };
+		B996E5F5293E10D500AC3342 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5F4293E10D500AC3342 /* MapViewModel.swift */; };
+		B996E5F7293E10E600AC3342 /* AllTypesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996E5F6293E10E600AC3342 /* AllTypesTableViewCell.swift */; };
+		B99E2D5229190E6500896896 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99E2D5129190E6500896896 /* CustomViewController.swift */; };
+		B99E2D5A29264F5300896896 /* TypesOfServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99E2D5929264F5300896896 /* TypesOfServicesViewController.swift */; };
+		B99E2D5C29264F6200896896 /* TypesOfServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99E2D5B29264F6200896896 /* TypesOfServicesView.swift */; };
+		B99E2D5E29264F7200896896 /* TypesOfServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99E2D5D29264F7200896896 /* TypesOfServicesViewModel.swift */; };
+		B99E2D6129268AED00896896 /* TypesOfServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99E2D6029268AED00896896 /* TypesOfServicesTableViewCell.swift */; };
+		B9B1F29229099C3600D17784 /* HistoryReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F29129099C3600D17784 /* HistoryReminder.swift */; };
+		B9B1F29429099C8100D17784 /* HistoryReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F29329099C8100D17784 /* HistoryReminderService.swift */; };
+		B9B1F2972909A52900D17784 /* HistoryReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2962909A52900D17784 /* HistoryReminderViewController.swift */; };
+		B9B1F2992909A53300D17784 /* HistoryReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2982909A53300D17784 /* HistoryReminderView.swift */; };
+		B9B1F29B2909A53E00D17784 /* HistoryReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F29A2909A53E00D17784 /* HistoryReminderViewModel.swift */; };
+		B9B1F29E2909A56A00D17784 /* HistoryReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F29D2909A56A00D17784 /* HistoryReminderTableViewCell.swift */; };
+		B9B1F2A3290D757100D17784 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2A2290D757100D17784 /* OnboardingViewController.swift */; };
+		B9B1F2A7291138F000D17784 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2A6291138F000D17784 /* UIViewController+Extension.swift */; };
+		B9B1F2AA2916B71400D17784 /* DescriptionHistoryReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2A92916B71400D17784 /* DescriptionHistoryReminderViewController.swift */; };
+		B9B1F2AC2916B72900D17784 /* DescriptionHistoryReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2AB2916B72900D17784 /* DescriptionHistoryReminderView.swift */; };
+		B9B1F2AE2916B73800D17784 /* DescriptionHistoryReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2AD2916B73800D17784 /* DescriptionHistoryReminderViewModel.swift */; };
+		B9B1F2B12917FE2700D17784 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2B02917FE2700D17784 /* DocumentsViewController.swift */; };
+		B9B1F2B32917FE3200D17784 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2B22917FE3200D17784 /* DocumentsView.swift */; };
+		B9B1F2B52917FE3F00D17784 /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2B42917FE3E00D17784 /* DocumentsViewModel.swift */; };
+		B9B1F2B92918027800D17784 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2B82918027800D17784 /* Documents.swift */; };
+		B9B1F2BB2918035200D17784 /* DocumentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2BA2918035200D17784 /* DocumentsTableViewCell.swift */; };
+		B9B1F2BF291823B400D17784 /* PassportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2BE291823B400D17784 /* PassportViewController.swift */; };
+		B9B1F2C1291823BF00D17784 /* PassportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2C0291823BF00D17784 /* PassportView.swift */; };
+		B9B1F2C3291823CC00D17784 /* PassportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2C2291823CC00D17784 /* PassportViewModel.swift */; };
+		B9B1F2C5291823DC00D17784 /* MedicalBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2C4291823DC00D17784 /* MedicalBookViewController.swift */; };
+		B9B1F2C7291823EB00D17784 /* MedicalBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2C6291823EB00D17784 /* MedicalBookView.swift */; };
+		B9B1F2C9291823F500D17784 /* MedicalBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1F2C8291823F500D17784 /* MedicalBookViewModel.swift */; };
 		B9BB12DE28DF36B500F044D3 /* EditNicknameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12DD28DF36B500F044D3 /* EditNicknameTableViewCell.swift */; };
 		B9BB12E028DF36D500F044D3 /* EditGenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12DF28DF36D500F044D3 /* EditGenderTableViewCell.swift */; };
 		B9BB12E228DF36EA00F044D3 /* EditAgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB12E128DF36EA00F044D3 /* EditAgeTableViewCell.swift */; };
@@ -73,8 +108,6 @@
 		B9DB045728C77D4400A78C84 /* NewDogServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB045628C77D4400A78C84 /* NewDogServices.swift */; };
 		B9DB045928CA64C100A78C84 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB045828CA64C100A78C84 /* SettingsView.swift */; };
 		B9DB045B28CA64D000A78C84 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB045A28CA64D000A78C84 /* SettingsViewModel.swift */; };
-		B9DB045E28CDF25200A78C84 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB045D28CDF25200A78C84 /* LanguageTableViewCell.swift */; };
-		B9DB046028CDF4C900A78C84 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB045F28CDF4C900A78C84 /* Language.swift */; };
 		B9DB046228CDFE2C00A78C84 /* RateUsAndPrivacyPolicyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB046128CDFE2C00A78C84 /* RateUsAndPrivacyPolicyTableViewCell.swift */; };
 		B9DB046428CDFEC800A78C84 /* RateUsAndPrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB046328CDFEC800A78C84 /* RateUsAndPrivacyPolicy.swift */; };
 		B9DB046728D886BD00A78C84 /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB046628D886BD00A78C84 /* RepeatViewController.swift */; };
@@ -93,6 +126,7 @@
 		B927B8C429056BFD00F9614D /* EditReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
 		B927B8C629056C0E00F9614D /* EditReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderView.swift; sourceTree = "<group>"; };
 		B927B8C829056C2400F9614D /* EditReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderViewModel.swift; sourceTree = "<group>"; };
+		B927B8CA2906DE4F00F9614D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		B94EEDF7289D45F00047D590 /* HealthyPetMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthyPetMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94EEDFA289D45F00047D590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B94EEE01289D45F00047D590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,7 +157,6 @@
 		B94EEE5628A3F1FE0047D590 /* BreedsDogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsDogCollectionViewCell.swift; sourceTree = "<group>"; };
 		B94EEE5928A433480047D590 /* MyDogsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B94EEE5B28A67B920047D590 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		B94EEE5D28A67BCD0047D590 /* BreedsDogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsDogTableViewCell.swift; sourceTree = "<group>"; };
 		B94EEE5F28A6BC770047D590 /* Dogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dogs.swift; sourceTree = "<group>"; };
 		B94EEE6228A900FD0047D590 /* ListOfDogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDogsViewController.swift; sourceTree = "<group>"; };
 		B94EEE6428A901090047D590 /* ListOfDogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDogsView.swift; sourceTree = "<group>"; };
@@ -140,6 +173,41 @@
 		B95AD6AA28F2EA9E00A3EBE8 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		B95AD6AF28F4620B00A3EBE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B95AD6B128F4625400A3EBE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B996E5C32927AD7400AC3342 /* TypesOfServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfServices.swift; sourceTree = "<group>"; };
+		B996E5E9293E108C00AC3342 /* AllTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesViewController.swift; sourceTree = "<group>"; };
+		B996E5EB293E109600AC3342 /* AllTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesView.swift; sourceTree = "<group>"; };
+		B996E5ED293E10A000AC3342 /* AllTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesViewModel.swift; sourceTree = "<group>"; };
+		B996E5F0293E10C000AC3342 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B996E5F2293E10C900AC3342 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		B996E5F4293E10D500AC3342 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		B996E5F6293E10E600AC3342 /* AllTypesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesTableViewCell.swift; sourceTree = "<group>"; };
+		B99E2D5129190E6500896896 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		B99E2D5929264F5300896896 /* TypesOfServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfServicesViewController.swift; sourceTree = "<group>"; };
+		B99E2D5B29264F6200896896 /* TypesOfServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfServicesView.swift; sourceTree = "<group>"; };
+		B99E2D5D29264F7200896896 /* TypesOfServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfServicesViewModel.swift; sourceTree = "<group>"; };
+		B99E2D6029268AED00896896 /* TypesOfServicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesOfServicesTableViewCell.swift; sourceTree = "<group>"; };
+		B9B1F29129099C3600D17784 /* HistoryReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReminder.swift; sourceTree = "<group>"; };
+		B9B1F29329099C8100D17784 /* HistoryReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReminderService.swift; sourceTree = "<group>"; };
+		B9B1F2962909A52900D17784 /* HistoryReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReminderViewController.swift; sourceTree = "<group>"; };
+		B9B1F2982909A53300D17784 /* HistoryReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReminderView.swift; sourceTree = "<group>"; };
+		B9B1F29A2909A53E00D17784 /* HistoryReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReminderViewModel.swift; sourceTree = "<group>"; };
+		B9B1F29D2909A56A00D17784 /* HistoryReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReminderTableViewCell.swift; sourceTree = "<group>"; };
+		B9B1F2A2290D757100D17784 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B9B1F2A6291138F000D17784 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		B9B1F2A92916B71400D17784 /* DescriptionHistoryReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionHistoryReminderViewController.swift; sourceTree = "<group>"; };
+		B9B1F2AB2916B72900D17784 /* DescriptionHistoryReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionHistoryReminderView.swift; sourceTree = "<group>"; };
+		B9B1F2AD2916B73800D17784 /* DescriptionHistoryReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionHistoryReminderViewModel.swift; sourceTree = "<group>"; };
+		B9B1F2B02917FE2700D17784 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
+		B9B1F2B22917FE3200D17784 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
+		B9B1F2B42917FE3E00D17784 /* DocumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
+		B9B1F2B82918027800D17784 /* Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documents.swift; sourceTree = "<group>"; };
+		B9B1F2BA2918035200D17784 /* DocumentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsTableViewCell.swift; sourceTree = "<group>"; };
+		B9B1F2BE291823B400D17784 /* PassportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportViewController.swift; sourceTree = "<group>"; };
+		B9B1F2C0291823BF00D17784 /* PassportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportView.swift; sourceTree = "<group>"; };
+		B9B1F2C2291823CC00D17784 /* PassportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportViewModel.swift; sourceTree = "<group>"; };
+		B9B1F2C4291823DC00D17784 /* MedicalBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalBookViewController.swift; sourceTree = "<group>"; };
+		B9B1F2C6291823EB00D17784 /* MedicalBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalBookView.swift; sourceTree = "<group>"; };
+		B9B1F2C8291823F500D17784 /* MedicalBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalBookViewModel.swift; sourceTree = "<group>"; };
 		B9BB12DD28DF36B500F044D3 /* EditNicknameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameTableViewCell.swift; sourceTree = "<group>"; };
 		B9BB12DF28DF36D500F044D3 /* EditGenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGenderTableViewCell.swift; sourceTree = "<group>"; };
 		B9BB12E128DF36EA00F044D3 /* EditAgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAgeTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,8 +226,6 @@
 		B9DB045628C77D4400A78C84 /* NewDogServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDogServices.swift; sourceTree = "<group>"; };
 		B9DB045828CA64C100A78C84 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B9DB045A28CA64D000A78C84 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		B9DB045D28CDF25200A78C84 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewCell.swift; sourceTree = "<group>"; };
-		B9DB045F28CDF4C900A78C84 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		B9DB046128CDFE2C00A78C84 /* RateUsAndPrivacyPolicyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateUsAndPrivacyPolicyTableViewCell.swift; sourceTree = "<group>"; };
 		B9DB046328CDFEC800A78C84 /* RateUsAndPrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateUsAndPrivacyPolicy.swift; sourceTree = "<group>"; };
 		B9DB046628D886BD00A78C84 /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
@@ -247,9 +313,11 @@
 		B94EEE0E289D46A70047D590 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				B9B1F29F290D752E00D17784 /* OnboardingFlow */,
 				B94EEE0F289D46C70047D590 /* Base */,
 				B94EEE10289D46DA0047D590 /* MyDogFlow */,
 				B94EEE11289D46FC0047D590 /* HealthFlow */,
+				B99E2D5629264EBE00896896 /* PetShopFlow */,
 				B94EEE12289D470C0047D590 /* SettingsFlow */,
 			);
 			path = Flows;
@@ -297,6 +365,8 @@
 				B94EEE27289D48B70047D590 /* UIView.swift */,
 				B94EEE29289D48D40047D590 /* UILabel.swift */,
 				B95AD6AA28F2EA9E00A3EBE8 /* NotificationCenter.swift */,
+				B927B8CA2906DE4F00F9614D /* UIButton.swift */,
+				B9B1F2A6291138F000D17784 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -367,6 +437,7 @@
 		B94EEE2B289D48F80047D590 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				B996E5C22927AD1200AC3342 /* PetShopEntity */,
 				B9BB12F628E33EA600F044D3 /* MyDogEntity */,
 				B9BB12F428E33E5000F044D3 /* HealthEntity */,
 				B9BB12F528E33E6E00F044D3 /* SettingsEntity */,
@@ -377,10 +448,12 @@
 		B94EEE2E289D4B410047D590 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9B1F2AF2917FE0800D17784 /* DocumentsViewController */,
 				B9DB044A28BA441100A78C84 /* EditProfileDogViewController */,
 				B94EEE6128A900E30047D590 /* ListOfDogsViewController */,
 				B94EEE4628A2D4230047D590 /* AddNewDogViewController */,
 				B94EEE37289D4CFE0047D590 /* MyDogViewController */,
+				B99E2D5129190E6500896896 /* CustomViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -396,6 +469,8 @@
 		B94EEE30289D4B5C0047D590 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9B1F2A82916B6EC00D17784 /* DescriptionHistoryReminderViewController */,
+				B9B1F2952909A4FC00D17784 /* HistoryReminderViewController */,
 				B927B8C329056BDA00F9614D /* EditReminderViewController */,
 				B9DB046528D8868A00A78C84 /* RepeatViewController */,
 				B94EEE7628AE443C0047D590 /* ReminderViewController */,
@@ -477,7 +552,6 @@
 				B94EEE5228A3DF020047D590 /* GenderDogCollectionViewCell.swift */,
 				B94EEE5428A3EF970047D590 /* DogAgeCollectionViewCell.swift */,
 				B94EEE5628A3F1FE0047D590 /* BreedsDogCollectionViewCell.swift */,
-				B94EEE5D28A67BCD0047D590 /* BreedsDogTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -529,6 +603,43 @@
 			path = ReminderViewController;
 			sourceTree = "<group>";
 		};
+		B996E5C22927AD1200AC3342 /* PetShopEntity */ = {
+			isa = PBXGroup;
+			children = (
+				B996E5C32927AD7400AC3342 /* TypesOfServices.swift */,
+			);
+			path = PetShopEntity;
+			sourceTree = "<group>";
+		};
+		B996E5E7293E106700AC3342 /* AllTypesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B996E5E8293E106C00AC3342 /* Cells */,
+				B996E5E9293E108C00AC3342 /* AllTypesViewController.swift */,
+				B996E5EB293E109600AC3342 /* AllTypesView.swift */,
+				B996E5ED293E10A000AC3342 /* AllTypesViewModel.swift */,
+			);
+			path = AllTypesViewController;
+			sourceTree = "<group>";
+		};
+		B996E5E8293E106C00AC3342 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B996E5F6293E10E600AC3342 /* AllTypesTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B996E5EF293E10AE00AC3342 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B996E5F0293E10C000AC3342 /* MapViewController.swift */,
+				B996E5F2293E10C900AC3342 /* MapView.swift */,
+				B996E5F4293E10D500AC3342 /* MapViewModel.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
 		B99B28D128DA178B00E8BA55 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +648,129 @@
 				B9BB130728F0719E00F044D3 /* SFProText-Semibold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B99E2D5629264EBE00896896 /* PetShopFlow */ = {
+			isa = PBXGroup;
+			children = (
+				B99E2D5829264F3B00896896 /* Controllers */,
+				B99E2D5729264F3100896896 /* Coordinator */,
+			);
+			path = PetShopFlow;
+			sourceTree = "<group>";
+		};
+		B99E2D5729264F3100896896 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B99E2D5829264F3B00896896 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B996E5EF293E10AE00AC3342 /* MapViewController */,
+				B996E5E7293E106700AC3342 /* AllTypesViewController */,
+				B99E2D5F29265B5A00896896 /* Cells */,
+				B99E2D5929264F5300896896 /* TypesOfServicesViewController.swift */,
+				B99E2D5B29264F6200896896 /* TypesOfServicesView.swift */,
+				B99E2D5D29264F7200896896 /* TypesOfServicesViewModel.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B99E2D5F29265B5A00896896 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B99E2D6029268AED00896896 /* TypesOfServicesTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B9B1F2952909A4FC00D17784 /* HistoryReminderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F29C2909A55400D17784 /* Cells */,
+				B9B1F2962909A52900D17784 /* HistoryReminderViewController.swift */,
+				B9B1F2982909A53300D17784 /* HistoryReminderView.swift */,
+				B9B1F29A2909A53E00D17784 /* HistoryReminderViewModel.swift */,
+			);
+			path = HistoryReminderViewController;
+			sourceTree = "<group>";
+		};
+		B9B1F29C2909A55400D17784 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F29D2909A56A00D17784 /* HistoryReminderTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B9B1F29F290D752E00D17784 /* OnboardingFlow */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F2A2290D757100D17784 /* OnboardingViewController.swift */,
+			);
+			path = OnboardingFlow;
+			sourceTree = "<group>";
+		};
+		B9B1F2A82916B6EC00D17784 /* DescriptionHistoryReminderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F2A92916B71400D17784 /* DescriptionHistoryReminderViewController.swift */,
+				B9B1F2AB2916B72900D17784 /* DescriptionHistoryReminderView.swift */,
+				B9B1F2AD2916B73800D17784 /* DescriptionHistoryReminderViewModel.swift */,
+			);
+			path = DescriptionHistoryReminderViewController;
+			sourceTree = "<group>";
+		};
+		B9B1F2AF2917FE0800D17784 /* DocumentsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F2BD2918239300D17784 /* MedicalBookViewController */,
+				B9B1F2BC2918238500D17784 /* PassportViewController */,
+				B9B1F2B62917FE4400D17784 /* Cells */,
+				B9B1F2B02917FE2700D17784 /* DocumentsViewController.swift */,
+				B9B1F2B22917FE3200D17784 /* DocumentsView.swift */,
+				B9B1F2B42917FE3E00D17784 /* DocumentsViewModel.swift */,
+			);
+			path = DocumentsViewController;
+			sourceTree = "<group>";
+		};
+		B9B1F2B62917FE4400D17784 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F2BA2918035200D17784 /* DocumentsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B9B1F2B72918026500D17784 /* DocumentsEntity */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F2B82918027800D17784 /* Documents.swift */,
+			);
+			path = DocumentsEntity;
+			sourceTree = "<group>";
+		};
+		B9B1F2BC2918238500D17784 /* PassportViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F2BE291823B400D17784 /* PassportViewController.swift */,
+				B9B1F2C0291823BF00D17784 /* PassportView.swift */,
+				B9B1F2C2291823CC00D17784 /* PassportViewModel.swift */,
+			);
+			path = PassportViewController;
+			sourceTree = "<group>";
+		};
+		B9B1F2BD2918239300D17784 /* MedicalBookViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1F2C4291823DC00D17784 /* MedicalBookViewController.swift */,
+				B9B1F2C6291823EB00D17784 /* MedicalBookView.swift */,
+				B9B1F2C8291823F500D17784 /* MedicalBookViewModel.swift */,
+			);
+			path = MedicalBookViewController;
 			sourceTree = "<group>";
 		};
 		B9BB12F328E33E3000F044D3 /* AddNewDogEntity */ = {
@@ -561,7 +795,6 @@
 			isa = PBXGroup;
 			children = (
 				B9DB046328CDFEC800A78C84 /* RateUsAndPrivacyPolicy.swift */,
-				B9DB045F28CDF4C900A78C84 /* Language.swift */,
 			);
 			path = SettingsEntity;
 			sourceTree = "<group>";
@@ -569,6 +802,7 @@
 		B9BB12F628E33EA600F044D3 /* MyDogEntity */ = {
 			isa = PBXGroup;
 			children = (
+				B9B1F2B72918026500D17784 /* DocumentsEntity */,
 				B9BB12F728E33EBB00F044D3 /* EditProfileEntity */,
 				B9BB12F328E33E3000F044D3 /* AddNewDogEntity */,
 			);
@@ -610,6 +844,7 @@
 			children = (
 				B9DB045328C76FE400A78C84 /* NewDog.swift */,
 				B9BB131428F2361200F044D3 /* Reminder.swift */,
+				B9B1F29129099C3600D17784 /* HistoryReminder.swift */,
 			);
 			path = EntityRealm;
 			sourceTree = "<group>";
@@ -619,6 +854,7 @@
 			children = (
 				B9DB045628C77D4400A78C84 /* NewDogServices.swift */,
 				B9BB131228F2360300F044D3 /* ReminderService.swift */,
+				B9B1F29329099C8100D17784 /* HistoryReminderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -626,7 +862,6 @@
 		B9DB045C28CDF20D00A78C84 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B9DB045D28CDF25200A78C84 /* LanguageTableViewCell.swift */,
 				B9DB046128CDFE2C00A78C84 /* RateUsAndPrivacyPolicyTableViewCell.swift */,
 			);
 			path = Cells;
@@ -663,6 +898,7 @@
 				B94EEDF4289D45F00047D590 /* Frameworks */,
 				B94EEDF5289D45F00047D590 /* Resources */,
 				2BBAABDA5B4F5D6503A16E00 /* [CP] Embed Pods Frameworks */,
+				63AF83A574C072330A263F58 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -764,6 +1000,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		63AF83A574C072330A263F58 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HealthyPetMVVM/Pods-HealthyPetMVVM-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HealthyPetMVVM/Pods-HealthyPetMVVM-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HealthyPetMVVM/Pods-HealthyPetMVVM-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -775,13 +1028,17 @@
 				B9DB045B28CA64D000A78C84 /* SettingsViewModel.swift in Sources */,
 				B927B8C929056C2400F9614D /* EditReminderViewModel.swift in Sources */,
 				B9BB12DE28DF36B500F044D3 /* EditNicknameTableViewCell.swift in Sources */,
+				B996E5F7293E10E600AC3342 /* AllTypesTableViewCell.swift in Sources */,
+				B9B1F2C5291823DC00D17784 /* MedicalBookViewController.swift in Sources */,
 				B94EEE28289D48B70047D590 /* UIView.swift in Sources */,
 				B94EEE5528A3EF970047D590 /* DogAgeCollectionViewCell.swift in Sources */,
 				B94EEE41289D64140047D590 /* MyDogFlowCoordinator.swift in Sources */,
 				B9BB12FD28EDB74A00F044D3 /* HealthTableViewCell.swift in Sources */,
 				B94EEE7A28AE44520047D590 /* ReminderView.swift in Sources */,
 				B927B8C529056BFD00F9614D /* EditReminderViewController.swift in Sources */,
+				B9B1F29E2909A56A00D17784 /* HistoryReminderTableViewCell.swift in Sources */,
 				B927B8C729056C0E00F9614D /* EditReminderView.swift in Sources */,
+				B9B1F2AE2916B73800D17784 /* DescriptionHistoryReminderViewModel.swift in Sources */,
 				B9DB045028BA445600A78C84 /* EditProfileDogViewModel.swift in Sources */,
 				B94EEE5C28A67B920047D590 /* BaseTableViewCell.swift in Sources */,
 				B94EEE5A28A433480047D590 /* MyDogsCollectionViewCell.swift in Sources */,
@@ -789,54 +1046,83 @@
 				B9BB12F928E33ED800F044D3 /* NickName.swift in Sources */,
 				B94EEE6328A900FD0047D590 /* ListOfDogsViewController.swift in Sources */,
 				B94EEE4A28A3B15C0047D590 /* AddNewDogView.swift in Sources */,
-				B94EEE5E28A67BCD0047D590 /* BreedsDogTableViewCell.swift in Sources */,
+				B9B1F2B92918027800D17784 /* Documents.swift in Sources */,
+				B996E5EC293E109600AC3342 /* AllTypesView.swift in Sources */,
 				B94EEE6C28A907480047D590 /* ListOfDogs.swift in Sources */,
 				B94EEE5128A3C3E60047D590 /* NicknameDogCollectionViewCell.swift in Sources */,
+				B996E5F3293E10C900AC3342 /* MapView.swift in Sources */,
+				B9B1F2972909A52900D17784 /* HistoryReminderViewController.swift in Sources */,
+				B9B1F2A3290D757100D17784 /* OnboardingViewController.swift in Sources */,
+				B99E2D5229190E6500896896 /* CustomViewController.swift in Sources */,
+				B996E5EA293E108C00AC3342 /* AllTypesViewController.swift in Sources */,
+				B9B1F29429099C8100D17784 /* HistoryReminderService.swift in Sources */,
+				B996E5F5293E10D500AC3342 /* MapViewModel.swift in Sources */,
 				B9DB047028D888D800A78C84 /* Repeat.swift in Sources */,
 				B9BB12E028DF36D500F044D3 /* EditGenderTableViewCell.swift in Sources */,
 				B94EEE5728A3F1FE0047D590 /* BreedsDogCollectionViewCell.swift in Sources */,
 				B94EEE7528AA7ADE0047D590 /* CareArray.swift in Sources */,
+				B9B1F2B52917FE3F00D17784 /* DocumentsViewModel.swift in Sources */,
+				B9B1F2C1291823BF00D17784 /* PassportView.swift in Sources */,
+				B99E2D5C29264F6200896896 /* TypesOfServicesView.swift in Sources */,
 				B95AD6AB28F2EA9E00A3EBE8 /* NotificationCenter.swift in Sources */,
 				B9DB045428C76FE400A78C84 /* NewDog.swift in Sources */,
 				B94EEE1E289D48230047D590 /* CGFloat.swift in Sources */,
+				B9B1F2C7291823EB00D17784 /* MedicalBookView.swift in Sources */,
 				B94EEE2A289D48D40047D590 /* UILabel.swift in Sources */,
 				B9DB044C28BA443900A78C84 /* EditProfileDogViewController.swift in Sources */,
+				B99E2D6129268AED00896896 /* TypesOfServicesTableViewCell.swift in Sources */,
 				B94EEE4328A293F50047D590 /* MyDogView.swift in Sources */,
 				B94EEE5328A3DF020047D590 /* GenderDogCollectionViewCell.swift in Sources */,
 				B94EEE6528A901090047D590 /* ListOfDogsView.swift in Sources */,
 				B9DB044E28BA444900A78C84 /* EditProfileDogView.swift in Sources */,
-				B9DB045E28CDF25200A78C84 /* LanguageTableViewCell.swift in Sources */,
 				B9BB131528F2361200F044D3 /* Reminder.swift in Sources */,
 				B94EEE26289D48770047D590 /* Dimension.swift in Sources */,
 				B94EEE22289D48490047D590 /* Array.swift in Sources */,
+				B9B1F29229099C3600D17784 /* HistoryReminder.swift in Sources */,
+				B927B8CB2906DE4F00F9614D /* UIButton.swift in Sources */,
 				B94EEE3E289D4D610047D590 /* SettingsViewController.swift in Sources */,
 				B94EEE4E28A3C2290047D590 /* BaseCollectionViewCell.swift in Sources */,
 				B9BB131328F2360300F044D3 /* ReminderService.swift in Sources */,
 				B9DB046228CDFE2C00A78C84 /* RateUsAndPrivacyPolicyTableViewCell.swift in Sources */,
+				B9B1F2B32917FE3200D17784 /* DocumentsView.swift in Sources */,
 				B94EEE7C28AE44600047D590 /* ReminderViewModel.swift in Sources */,
 				B94EEE4C28A3B16C0047D590 /* AddNewDogViewModel.swift in Sources */,
+				B9B1F2B12917FE2700D17784 /* DocumentsViewController.swift in Sources */,
 				B9DB045928CA64C100A78C84 /* SettingsView.swift in Sources */,
+				B99E2D5A29264F5300896896 /* TypesOfServicesViewController.swift in Sources */,
+				B9B1F29B2909A53E00D17784 /* HistoryReminderViewModel.swift in Sources */,
 				B9DB046B28D886D800A78C84 /* RepeatViewModel.swift in Sources */,
 				B9DB046428CDFEC800A78C84 /* RateUsAndPrivacyPolicy.swift in Sources */,
+				B9B1F2AC2916B72900D17784 /* DescriptionHistoryReminderView.swift in Sources */,
+				B996E5C42927AD7400AC3342 /* TypesOfServices.swift in Sources */,
+				B9B1F2AA2916B71400D17784 /* DescriptionHistoryReminderViewController.swift in Sources */,
 				B9DB046928D886CC00A78C84 /* RepeatView.swift in Sources */,
 				B94EEE7028AA74A30047D590 /* HealthViewModel.swift in Sources */,
 				B94EEE1C289D48080047D590 /* AdaptiveLayoutHelper.swift in Sources */,
 				B94EEE4528A294030047D590 /* MyDogViewModel.swift in Sources */,
 				B94EEE7328AA78310047D590 /* HealthCollectionViewCell.swift in Sources */,
 				B94EEE20289D48370047D590 /* Int.swift in Sources */,
+				B9B1F2C9291823F500D17784 /* MedicalBookViewModel.swift in Sources */,
+				B9B1F2BF291823B400D17784 /* PassportViewController.swift in Sources */,
 				B9BB130D28F072EE00F044D3 /* HealthReminderTableViewCell.swift in Sources */,
 				B9DB046E28D8887700A78C84 /* RepeatTableViewCell.swift in Sources */,
 				B94EEE6028A6BC770047D590 /* Dogs.swift in Sources */,
+				B9B1F2BB2918035200D17784 /* DocumentsTableViewCell.swift in Sources */,
+				B9B1F2C3291823CC00D17784 /* PassportViewModel.swift in Sources */,
 				B94EEE3B289D4D360047D590 /* HealthViewController.swift in Sources */,
+				B996E5F1293E10C000AC3342 /* MapViewController.swift in Sources */,
 				B94EEE6E28AA74980047D590 /* HealthView.swift in Sources */,
+				B99E2D5E29264F7200896896 /* TypesOfServicesViewModel.swift in Sources */,
 				B94EEDFB289D45F00047D590 /* AppDelegate.swift in Sources */,
 				B94EEE6A28A9049E0047D590 /* ListOfDogsTableViewCell.swift in Sources */,
+				B9B1F2A7291138F000D17784 /* UIViewController+Extension.swift in Sources */,
 				B9DB046728D886BD00A78C84 /* RepeatViewController.swift in Sources */,
 				B94EEE24289D48610047D590 /* Device.swift in Sources */,
 				B94EEE6728A901150047D590 /* ListOfDogsViewModel.swift in Sources */,
-				B9DB046028CDF4C900A78C84 /* Language.swift in Sources */,
 				B94EEE4828A2D4420047D590 /* AddNewDogViewController.swift in Sources */,
 				B9BB12E428DF38C900F044D3 /* EditBreedsTableViewCell.swift in Sources */,
+				B9B1F2992909A53300D17784 /* HistoryReminderView.swift in Sources */,
+				B996E5EE293E10A000AC3342 /* AllTypesViewModel.swift in Sources */,
 				B9BB12E228DF36EA00F044D3 /* EditAgeTableViewCell.swift in Sources */,
 				B9DB045728C77D4400A78C84 /* NewDogServices.swift in Sources */,
 			);
@@ -924,7 +1210,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -979,7 +1265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1001,12 +1287,15 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HealthyPetMVVM/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HealthyPet;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used photo";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TestGoogleMaps show my coordinate";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1032,12 +1321,15 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HealthyPetMVVM/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HealthyPet;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used photo";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TestGoogleMaps show my coordinate";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -54,6 +54,17 @@ class RepeatTableViewCell: BaseTableViewCell {
         }
         
     }
+    func selectCell() {
+        self.accessoryType = .checkmark
+        self.tintColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+        repeats.textColor = UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1)
+    }
+    
+    func deselectCell() {
+        self.accessoryType = .none
+        self.tintColor = .black
+        repeats.textColor = .black
+    }
     func addSubviews() {
         contentView.addSubview(repeats)
         

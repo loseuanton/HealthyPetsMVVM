@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import UserNotifications
 
-class ReminderViewController: UIViewController {
+class ReminderViewController: UIViewController, UIGestureRecognizerDelegate {
     var openRepeatsScreen: (() -> Void)?
     var natificationCenter = NotificationCenter()
 
@@ -33,6 +33,7 @@ class ReminderViewController: UIViewController {
         
         configureView()
         natificationCenter.notification()
+        
         
         
     }
@@ -67,6 +68,7 @@ class ReminderViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         rootView.textView.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         rootView.backgroundView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalTo(rootView.commentLabel.snp.bottom).offset(4)
@@ -93,7 +95,8 @@ class ReminderViewController: UIViewController {
         let data = NSData(data: (rootView.imageReminder.image?.jpegData(compressionQuality: 0.9))!)
         
         reminder.reminderIcon = data as Data
-        reminder.action = navigationItem.title ?? "Прививки"
+        //reminder.action = navigationItem.title ?? "Прививки"
+        reminder.action = rootView.titleLabel.text ?? "Прививки"
         reminderService.saveReminder(reminder: reminder)
         self.navigationController?.popToRootViewController(animated: true)
         print(reminder.time)
@@ -117,5 +120,8 @@ extension ReminderViewController: UITextViewDelegate {
             textView.text = "Добавьте описание, например, таблетка от клещей"
             textView.textColor = UIColor.lightGray
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        rootView.textView.endEditing(true)
     }
 }

@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class EditProfileDogViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class EditProfileDogViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     var changeDogImage: ((UIImage?) -> Void)?
-    var openListOfDogScreen: (() -> Void)?
+    var openListOfBreeds: ((PetType) -> Void)?
     
     
     // MARK: - Views
@@ -18,7 +18,8 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
     var viewModel = EditProfileDogViewModel()
     var items: [BaseConfigureTableCellRowProtocol] = []
     var newDogServices = NewDogServices()
-   
+    private var currentPetType: PetType?
+    
     
     
     
@@ -26,7 +27,7 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         super.loadView()
         self.view = rootView
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         rootView.editProfileTableView.register(EditNicknameTableViewCell.self, forCellReuseIdentifier: "EditNicknameTableViewCellItem")
@@ -43,6 +44,8 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         configureView()
         bindingViewModel()
         viewModel.loadTableCells()
+        hideKeyboardWhenTappedAround()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -55,6 +58,7 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         
         bindingViewModel()
         print("\(viewModel.editDog) ggggg")
+        currentPet()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,8 +70,9 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         rootView.addSubviews()
         rootView.configureLayout()
         rootView.decorate()
-        
-        rootView.centralDogIcon.image = UIImage(data: viewModel.editDogCopy!.imageDog as Data)
+        if let imageDog = viewModel.editDogCopy?.imageDog {
+            rootView.centralDogIcon.image = UIImage(data: imageDog as Data)
+        }
         let leftBarButton = UIBarButtonItem(customView: rootView.leftBarButton)
         leftBarButton.tintColor = .clear
         self.navigationItem.leftBarButtonItem = leftBarButton
@@ -84,7 +89,8 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openAlertPhoto))
         rootView.centralDogIcon.addGestureRecognizer(tapGesture)
         rootView.deleteProfileButton.addTarget(self, action: #selector(deleteEditDog), for: .touchUpInside)
-        
+        //let tapDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+        //rootView.backgroundView.addGestureRecognizer(tapDismissKeyboard)
     }
     
     func bindingViewModel() {
@@ -94,13 +100,22 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
             
         }
     }
+    func currentPet() {
+        if viewModel.editDog?.animalDogOrCat == "Собака" {
+            currentPetType = .dog
+        } else {
+            currentPetType = .cat
+        }
+    }
     @objc func deleteEditDog() {
         let alert = UIAlertController(title: "Вы уверены, что хотите удалить профиль собаки?", message: "Все данные будут удалены.", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Отмена", style: .default) { _ in
             alert.dismiss(animated: true)
         }
         let yesButton = UIAlertAction(title: "Да", style: .default) { _ in
-            self.newDogServices.removeDog(dog: self.viewModel.editDog!)
+            if let editdog = self.viewModel.editDog {
+                self.newDogServices.removeDog(dog: editdog)
+            }
             self.navigationController?.popToRootViewController(animated: true)
         }
         alert.addAction(cancelButton)
@@ -111,9 +126,13 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
         self.navigationController?.popToRootViewController(animated: true)
     }
     @objc func saveEditDog() {
-        newDogServices.saveEditDog(newDog: viewModel.editDogCopy!)
+        if let editDogCopy = viewModel.editDogCopy {
+            newDogServices.saveEditDog(newDog: editDogCopy)
+        }
         self.navigationController?.popToRootViewController(animated: true)
     }
+    // MARK: - Open Alert Photo
+    
     @objc func openAlertPhoto(sender: UITapGestureRecognizer) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -173,22 +192,19 @@ class EditProfileDogViewController: UIViewController, UIImagePickerControllerDel
     
 }
 extension EditProfileDogViewController: UITableViewDelegate, UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return items.count
-   
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item: BaseConfigureTableCellRowProtocol = items[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier, for: indexPath) as? BaseTableViewCell {
             cell.selectionStyle = .none
-            cell.accessoryType = .disclosureIndicator
+            //cell.accessoryType = .disclosureIndicator
             cell.configure(item: item)
-           
-            
-            
             return cell
         }
         return UITableViewCell()
@@ -196,8 +212,10 @@ extension EditProfileDogViewController: UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
+            
             rootView.pickerAgeOff()
             rootView.changeStatePickerGender()
+            
             
         } else if indexPath.row == 2 {
             rootView.pickerGenderOff()
@@ -207,7 +225,7 @@ extension EditProfileDogViewController: UITableViewDelegate, UITableViewDataSour
         } else if indexPath.row == 3 {
             rootView.pickerAgeOff()
             rootView.pickerGenderOff()
-            openListOfDogScreen?()
+            openListOfBreeds?(currentPetType ?? .dog)
         } else {
             rootView.pickerAgeOff()
             rootView.pickerGenderOff()
@@ -217,12 +235,12 @@ extension EditProfileDogViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-       
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = rootView.editProfileTableView.bounds.height / 4.0
-       
+        
         return height
     }
     
@@ -318,42 +336,42 @@ extension EditProfileDogViewController: UIPickerViewDataSource {
             }
             return 0.0
         }
-        }
-        
+    }
+    
     
     
     
 }
 extension EditProfileDogViewController: UIPickerViewDelegate {
     /*
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView === rootView.pickerGender {
-            if row == 0 {
-                return "Мужской"
-            } else {
-                return "Женский"
-            }
-            
-        } else {
-            if component == 0 {
-                return "\(row)"
-            }
-            if component == 1 {
-                return "Года"
-            }
-            if component == 2 {
-                return "\(row)"
-            }
-            if component == 3 {
-                return "Месяцев"
-            }
-            return ""
-        }
-        
-    }
+     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+     if pickerView === rootView.pickerGender {
+     if row == 0 {
+     return "Мужской"
+     } else {
+     return "Женский"
+     }
+     
+     } else {
+     if component == 0 {
+     return "\(row)"
+     }
+     if component == 1 {
+     return "Года"
+     }
+     if component == 2 {
+     return "\(row)"
+     }
+     if component == 3 {
+     return "Месяцев"
+     }
+     return ""
+     }
+     
+     }
      */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       
+        
         if pickerView === rootView.pickerGender {
             if row == 0 {
                 viewModel.updateDogGender(gender: "Мужской")

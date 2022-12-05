@@ -80,9 +80,6 @@ class HealthCollectionViewCell: BaseCollectionViewCell {
         if let item = item as? HealthCollectionViewCellItem {
             careTextLabel.text = item.careArray?.name
             careImageView.image = item.careArray?.image
-            
-            
-            //self.item = item
         }
     }
     func addSubviews() {

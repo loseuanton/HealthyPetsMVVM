@@ -27,7 +27,6 @@ class HealthReminderTableViewCell: BaseTableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         configureCell()
         
         
@@ -51,6 +50,7 @@ class HealthReminderTableViewCell: BaseTableViewCell {
     }
     override func configure(item: BaseConfigureTableCellRowProtocol) {
         self.backgroundColor = .clear
+        
         cellBackgroundView.backgroundColor = .white
         cellBackgroundView.layer.cornerRadius = 10
         healthIImage.image = UIImage(named: "careImage-1")
@@ -75,7 +75,10 @@ class HealthReminderTableViewCell: BaseTableViewCell {
             let timeString = dateForrmater.string(from: item.reminder?.time ?? Date())
             self.timeLabel.text = timeString
             self.actionLabel.text = item.reminder?.action
-            self.healthIImage.image =  UIImage(data: item.reminder!.reminderIcon as Data)
+            if let reminderIcon = item.reminder?.reminderIcon {
+                self.healthIImage.image =  UIImage(data: reminderIcon as Data)
+            }
+            
             
             missedNotification()
             
@@ -90,8 +93,8 @@ class HealthReminderTableViewCell: BaseTableViewCell {
            
             cellBackgroundView.addSubview(missedLabel)
             missedLabel.snp.makeConstraints { make in
-                make.bottom.equalTo(cellBackgroundView.snp.bottom).offset(-8.HAdapted)
-                make.top.equalTo(actionLabel.snp.bottom).offset(4.VAdapted)
+                make.bottom.equalTo(cellBackgroundView.snp.bottom).offset(-8)
+                make.top.equalTo(actionLabel.snp.bottom).offset(4)
                 make.left.equalTo(healthIImage.snp.right).offset(8.HAdapted)
                 make.width.equalTo(105.HAdapted)
             }
@@ -115,9 +118,9 @@ class HealthReminderTableViewCell: BaseTableViewCell {
     func configureLayout() {
         cellBackgroundView.snp.makeConstraints { make in
             make.left.equalTo(contentView.snp.left).offset(16.HAdapted)
-            make.top.equalTo(contentView.snp.top).offset(8.VAdapted)
+            make.top.equalTo(contentView.snp.top).offset(8)
             make.right.equalTo(contentView.snp.right).offset(-16.HAdapted)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-8.VAdapted)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-8)
         }
         healthIImage.snp.makeConstraints { make in
             make.left.equalTo(cellBackgroundView.snp.left).offset(16.HAdapted)
@@ -125,15 +128,18 @@ class HealthReminderTableViewCell: BaseTableViewCell {
             make.size.equalTo([30, 30].HResized)
         }
         timeLabel.snp.makeConstraints { make in
-            make.left.equalTo(healthIImage.snp.right).offset(8.HAdapted)
-            make.top.equalTo(cellBackgroundView.snp.top).offset(8.VAdapted)
-            make.right.equalTo(cellBackgroundView.snp.right).offset(-9.HAdapted)
-            make.bottom.equalTo(actionLabel.snp.top).offset(-4.VAdapted)
+            make.left.equalTo(healthIImage.snp.right).offset(8)
+            make.top.equalTo(cellBackgroundView.snp.top).offset(8)
+            make.right.equalTo(cellBackgroundView.snp.right).offset(-9)
+            make.bottom.equalTo(actionLabel.snp.top).offset(-4)
+            make.height.equalTo(18.VAdapted)
         }
         actionLabel.snp.makeConstraints { make in
-            make.left.equalTo(healthIImage.snp.right).offset(8.HAdapted)
-            make.top.equalTo(timeLabel.snp.bottom).offset(4.VAdapted)
-            make.right.equalTo(cellBackgroundView.snp.right).offset(-9.HAdapted)
+            make.left.equalTo(healthIImage.snp.right).offset(8)
+            make.top.equalTo(timeLabel.snp.bottom).offset(4)
+            make.right.equalTo(cellBackgroundView.snp.right).offset(-9)
+            //make.bottom.equalTo(cellBackgroundView.snp.bottom).offset(-8)
+            make.height.equalTo(22.VAdapted)
         }
         settingsIcon.snp.makeConstraints { make in
             make.centerY.equalTo(cellBackgroundView.snp.centerY)

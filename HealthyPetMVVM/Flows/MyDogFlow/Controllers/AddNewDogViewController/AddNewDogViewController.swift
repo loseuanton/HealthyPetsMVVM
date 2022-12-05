@@ -12,10 +12,11 @@ class AddNewDogViewController: UIViewController {
     var rootView = AddNewDogView()
     let viewModel = AddNewDogViewModel()
     var items: [BaseConfigureCollectionCellRowProtocol] = []
-    // TODO: вопрос 3 по выбору породы
-    var openListOfDogs: (( ((String?)->Void)? ) -> Void)?
+//    // TODO: вопрос 3 по выбору породы
+//    var openListOfDogs: (( ((String?) -> Void)? ) -> Void)?
     var changeDogImage: ((UIImage?) -> Void)?
     var newDogServices = NewDogServices()
+    var openListOfBreeds: ((PetType) -> Void)?
    
     
     
@@ -36,9 +37,11 @@ class AddNewDogViewController: UIViewController {
         configureView()
         rootView.newDogCollectionView.delegate = self
         rootView.newDogCollectionView.dataSource = self
+       
         rootView.picker.delegate = self
         rootView.picker.dataSource = self
-        viewModel.openListOfDogs = self.openListOfDogs
+        viewModel.openListOfBreeds = self.openListOfBreeds
+        //viewModel.openListOfDogs = self.openListOfDogs
         viewModel.changeDogImage = { [weak self] changeDogImage in
             self?.changeDogImage = changeDogImage
             self?.openAlertPhoto()
@@ -49,6 +52,7 @@ class AddNewDogViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        hideKeyboardWhenTappedAround()
         
        
         
@@ -57,19 +61,9 @@ class AddNewDogViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         rootView.backgroundView.gradient()
-        
         rootView.bgViewForPageControl.layer.cornerRadius = rootView.bgViewForPageControl.bounds.size.height / 2.0
       
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-        
-        
-    }
-    
-    
     func configureView() {
         rootView.addSubviews()
         rootView.configureLayout()
@@ -88,6 +82,11 @@ class AddNewDogViewController: UIViewController {
             self?.rootView.newDogCollectionView.reloadData()
             
         }
+    }
+    func updateBreedText(text: String) {
+        viewModel.newDog.breed = text
+        viewModel.updateDogBreed(breed: text)
+        
     }
     
     
@@ -176,6 +175,7 @@ extension AddNewDogViewController: UIImagePickerControllerDelegate, UINavigation
 extension AddNewDogViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         rootView.pageControl.currentPage = indexPath.row
+        
         print(indexPath.row)
         
         if indexPath.row == 2 {

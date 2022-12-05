@@ -33,6 +33,7 @@ class EditAgeTableViewCell: BaseTableViewCell {
     var ageTextLabel = UILabel()
     var monthLabel = UILabel()
     var monthTextLabel = UILabel()
+    var customAccessoryType = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,6 +56,8 @@ class EditAgeTableViewCell: BaseTableViewCell {
         configureLayout()
     }
     override func configure(item: BaseConfigureTableCellRowProtocol) {
+        customAccessoryType.image = UIImage(systemName: "chevron.down")
+        customAccessoryType.tintColor = .black
         ageLabelText.customBlackText(nameFont: "SFProText-Regular", sizeFont: 13, text: "Возраст", letter: -0.08)
         ageLabelText.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
         ageLabelText.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
@@ -102,20 +105,25 @@ class EditAgeTableViewCell: BaseTableViewCell {
     func addSubviews() {
         contentView.addSubview(ageLabelText)
         contentView.addSubview(fullAgeTextLabel)
-        
+        contentView.addSubview(customAccessoryType)
         
     }
     func configureLayout() {
         ageLabelText.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(8.VAdapted)
             make.left.equalTo(contentView.snp.left).offset(16.HAdapted)
-            make.right.equalTo(contentView.snp.right).offset(-16.HAdapted)
+            make.right.equalTo(customAccessoryType.snp.left).offset(-6.HAdapted)
             make.bottom.equalTo(fullAgeTextLabel.snp.top).offset(-4.VAdapted)
         }
         fullAgeTextLabel.snp.makeConstraints { make in
             make.left.equalTo(contentView.snp.left).offset(16.HAdapted)
-            make.right.equalTo(contentView.snp.right).offset(-16.HAdapted)
+            make.right.equalTo(customAccessoryType.snp.left).offset(-6.HAdapted)
             make.bottom.equalTo(contentView.snp.bottom).offset(-8.VAdapted)
+        }
+        customAccessoryType.snp.makeConstraints { make in
+            make.right.equalTo(contentView.snp.right).offset(-13.HAdapted)
+            make.centerY.equalTo(contentView.snp.centerY)
+            make.size.equalTo([20, 20].HResized)
         }
     }
     

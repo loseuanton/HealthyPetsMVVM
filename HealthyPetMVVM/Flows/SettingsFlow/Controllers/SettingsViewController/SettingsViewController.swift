@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        rootView.settingsTableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: "LanguageTableViewCellItem")
+        
         rootView.settingsTableView.register(RateUsAndPrivacyPolicyTableViewCell.self, forCellReuseIdentifier: "RateUsAndPrivacyPolicyTableViewCellItem")
         rootView.settingsTableView.delegate = self
         rootView.settingsTableView.dataSource = self
@@ -89,7 +89,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = rootView.settingsTableView.bounds.height / 3.0
+        let height = rootView.settingsTableView.bounds.height / 2.0
        
         return height
     }

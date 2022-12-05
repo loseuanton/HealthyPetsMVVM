@@ -37,7 +37,7 @@ class SettingsView: UIView {
         }
         settingsTableView.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(24.VAdapted)
-            make.size.equalTo([358, 132].HResized)
+            make.size.equalTo([358, 120].HResized)
             make.centerX.equalToSuperview()
         }
         settingsWoman.snp.makeConstraints { make in

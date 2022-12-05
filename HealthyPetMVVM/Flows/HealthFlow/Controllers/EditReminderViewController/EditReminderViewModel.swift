@@ -10,8 +10,8 @@ import UIKit
 
 class EditReminderViewModel {
     var editReminder: Reminder?
-    
     var editReminderCopy: Reminder?
+    var historyReminder: HistoryReminder = HistoryReminder()
     
     
 }

@@ -14,15 +14,18 @@ class HealthView: UIView {
     var backgroundView = UIView()
     var healthyTableView = UITableView()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    var rightBarButton = UIButton()
    
     
     func decorate() {
+        rightBarButton.setImage(UIImage(named: "historyIcon"), for: .normal)
        
         healthyTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         healthyTableView.clipsToBounds = true
         healthyTableView.backgroundColor = .clear
         healthyTableView.separatorColor = UIColor.clear
         healthyTableView.isHidden = false
+        
         collectionView.backgroundColor = .clear
         
     }

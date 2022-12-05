@@ -9,10 +9,15 @@ import Foundation
 import UIKit
 import SnapKit
 
-struct BreedsDogCollectionViewCellItem: BaseConfigureCollectionCellRowProtocol {
+class BreedsDogCollectionViewCellItem: BaseConfigureCollectionCellRowProtocol {
+    init(){}
     var cellIdentifier = "BreedsDogCollectionViewCellItem"
-    var changeDogBreed: ((String) -> Void)?
-    var openListDogs: (( ((String?)->Void)? ) -> Void)?
+    var changeDogOrCat: ((String) -> Void)?
+    var openListOfBreeds: ((PetType) -> Void)?
+    var updateDogBreedComplition: ((String) -> Void)?
+    func updateDogBreed(breed: String) {
+        updateDogBreedComplition?(breed)
+    }
     
 }
 
@@ -21,23 +26,27 @@ class BreedsDogCollectionViewCell: BaseCollectionViewCell {
     var items: [BaseConfigureTableCellRowProtocol] = []
     let viewModel = AddNewDogViewModel()
     
-   
+    
     // TODO: вопрос 3 по выбору породы
     var dogName: String?
     
+    private var currentPetType: PetType?
+    
     
     var dogBreed = UILabel()
-    var breedsDogTableView = UITableView()
+    var dogButton = UIButton()
+    var catButton = UIButton()
+    var dogOrCatLabel = UILabel()
+    var dogImage = UIImageView()
+    var catImage = UIImageView()
+    var listOfBreedsButton = UIButton()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()
-        bindingViewModel()
-        viewModel.loadTableCells()
-
-        
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -46,7 +55,7 @@ class BreedsDogCollectionViewCell: BaseCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-
+        
         
     }
     private func configureCell() {
@@ -54,163 +63,144 @@ class BreedsDogCollectionViewCell: BaseCollectionViewCell {
         configureLayout()
     }
     override func configure(item: BaseConfigureCollectionCellRowProtocol) {
-        dogBreed.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Какая порода у вашей собаки?", letter: 0.38)
+        dogBreed.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Какая порода у вашего питомца?", letter: 0.38)
         dogBreed.font = UIFont.boldSystemFont(ofSize: CGFloat(20).adaptedFontSize)
         
-        breedsDogTableView.register(BreedsDogTableViewCell.self, forCellReuseIdentifier: "BreedsDogTableViewCellItem")
-        breedsDogTableView.delegate = self
-        breedsDogTableView.dataSource = self
-        breedsDogTableView.backgroundColor = .clear
-        breedsDogTableView.isHidden = false
-        breedsDogTableView.layer.cornerRadius = 10
-        breedsDogTableView.clipsToBounds = true
-        breedsDogTableView.isScrollEnabled = false
+        dogImage.image = UIImage(named: "animalDogIcon")
+        dogImage.contentMode = .scaleAspectFit
+        catImage.image = UIImage(named: "animalCatIcon")
+        catImage.contentMode = .scaleAspectFit
+        
+        dogButton.backgroundColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18)
+        dogButton.layer.borderColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18).cgColor
+        dogButton.layer.borderWidth = 1
+        dogButton.layer.cornerRadius = 15
+        dogButton.clipsToBounds = true
+        dogButton.setAttributedTitle(NSAttributedString(string: "Собака", attributes: [NSMutableAttributedString.Key.kern: -0.41]), for: .normal)
+        dogButton.setTitleColor(.black, for: .normal)
+        dogButton.addTarget(self, action: #selector(dogButtonDidTap), for: .touchUpInside)
+        dogButton.contentVerticalAlignment = .bottom
+        dogButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+        
+        catButton.layer.borderColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18).cgColor
+        catButton.layer.borderWidth = 1
+        catButton.layer.cornerRadius = 15
+        catButton.clipsToBounds = true
+        catButton.setAttributedTitle(NSAttributedString(string: "Кот", attributes: [NSMutableAttributedString.Key.kern: -0.41]), for: .normal)
+        catButton.setTitleColor(.black, for: .normal)
+        catButton.addTarget(self, action: #selector(catButtonDidTap), for: .touchUpInside)
+        catButton.contentVerticalAlignment = .bottom
+        catButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+        
+        listOfBreedsButton.setTitle("Список пород", for: .normal)
+        listOfBreedsButton.setTitleColor(.black, for: .normal)
+        listOfBreedsButton.backgroundColor = .white
+        listOfBreedsButton.addTarget(self, action: #selector(listOfBreeds), for: .touchUpInside)
+        listOfBreedsButton.layer.cornerRadius = 10
+        listOfBreedsButton.setTitleColor(UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6), for: .normal)
+        listOfBreedsButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        listOfBreedsButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+       
+        
+        
         if let item = item as? BreedsDogCollectionViewCellItem {
             self.item = item
+            self.item?.updateDogBreedComplition = { breed in
+                self.listOfBreedsButton.setTitle("\(breed)", for: .normal)
+                self.listOfBreedsButton.setTitleColor(UIColor(red: 0.574, green: 0.407, blue: 1, alpha: 1), for: .normal)
+                print("\(breed) пришла")
+            }
         }
     }
-    func bindingViewModel() {
-        viewModel.complitionTableLoadData = { [weak self] items in
-            self?.items = items
-            self?.breedsDogTableView.reloadData()
-            
-        }
-    }
-    
+   
     func addSubviews() {
-        breedsDogTableView.removeFromSuperview()
         dogBreed.removeFromSuperview()
+        contentView.addSubview(dogButton)
+        dogButton.addSubview(dogImage)
+        contentView.addSubview(catButton)
+        catButton.addSubview(catImage)
         contentView.addSubview(dogBreed)
-        contentView.addSubview(breedsDogTableView)
+        contentView.addSubview(listOfBreedsButton)
         
     }
     func configureLayout() {
         dogBreed.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(24.VAdapted)
             make.centerX.equalToSuperview()
-            make.height.equalTo(24.VAdapted)
+            make.height.equalTo(24)
         }
-        breedsDogTableView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(80.VAdapted)
-            make.size.equalTo([280, 236].HResized)
+        dogButton.snp.makeConstraints { make in
+            make.top.equalTo(dogBreed.snp.bottom).offset(32.VAdapted)
+            make.left.equalTo(contentView.snp.left).offset(63.HAdapted)
+            make.size.equalTo([120, 152].HResized)
+            make.right.equalTo(catButton.snp.left).offset(-24.HAdapted)
+            make.bottom.equalTo(listOfBreedsButton.snp.top).offset(-32.VAdapted)
+        }
+        catButton.snp.makeConstraints { make in
+            make.top.equalTo(dogBreed.snp.bottom).offset(32.VAdapted)
+            make.right.equalTo(contentView.snp.right).offset(-63.HAdapted)
+            make.size.equalTo([120, 152].HResized)
+            make.bottom.equalTo(listOfBreedsButton.snp.top).offset(-32.VAdapted)
+        }
+        dogImage.snp.makeConstraints { make in
+            make.top.equalTo(dogButton.snp.top).offset(20.VAdapted)
+            make.left.equalTo(dogButton.snp.left).offset(20.VAdapted)
+            make.right.equalTo(dogButton.snp.right).offset(-20.VAdapted)
+            make.bottom.equalTo(dogButton.snp.bottom).offset(-52.VAdapted)
+            
+        }
+        catImage.snp.makeConstraints { make in
+            make.top.equalTo(catButton.snp.top).offset(20.VAdapted)
+            make.left.equalTo(catButton.snp.left).offset(20.VAdapted)
+            make.right.equalTo(catButton.snp.right).offset(-20.VAdapted)
+            make.bottom.equalTo(catButton.snp.bottom).offset(-52.VAdapted)
+            
+        }
+        listOfBreedsButton.snp.makeConstraints { make in
+            make.size.equalTo([280, 44].HResized)
             make.left.equalTo(contentView.snp.left).offset(55.HAdapted)
             make.right.equalTo(contentView.snp.right).offset(-55.HAdapted)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-24.VAdapted)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-32.VAdapted)
         }
     }
-}
-
-extension BreedsDogCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            self.layer.cornerRadius = 10
-            self.clipsToBounds = true
-            self.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-           return items.count
-        } else {
+    @objc func dogButtonDidTap() {
+        currentPetType = .dog
+        
+        if dogButton.isSelected == true {
+            dogButton.backgroundColor = .clear
+            dogButton.isSelected = false
             
-            return 1
+        } else if !dogButton.isSelected == true {
+            dogButton.backgroundColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18)
+            dogOrCatLabel.text = "Собака"
+            self.item?.changeDogOrCat?(dogOrCatLabel.text ?? "")
+            catButton.backgroundColor = .clear
+            catButton.isSelected = false
+            dogButton.isSelected = true
         }
-            
         
         
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let isLastCell = indexPath.row == items.count - 1
-        let defaultInset = tableView.separatorInset
+    @objc func catButtonDidTap() {
+        currentPetType = .cat
         
-        if isLastCell {
-            cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.width, bottom: 0, right: 0)
-        } else {
-            cell.separatorInset = defaultInset
+        if catButton.isSelected == true {
+            catButton.backgroundColor = .clear
+            catButton.isSelected = false
+            
+        } else if !catButton.isSelected == true {
+            catButton.backgroundColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18)
+            dogOrCatLabel.text = "Кот"
+            self.item?.changeDogOrCat?(dogOrCatLabel.text ?? "")
+            dogButton.backgroundColor = .clear
+            dogButton.isSelected = false
+            catButton.isSelected = true
         }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item: BaseConfigureTableCellRowProtocol = items[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier, for: indexPath) as? BreedsDogTableViewCell {
-            if indexPath.section == 0 {
-                cell.configure(item: item)
-                cell.accessoryType = .none
-                if indexPath.row == 3 {
-                    cell.layer.cornerRadius = 10
-                    cell.clipsToBounds = true
-                    cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-                }
-                
-            } else {
-                // TODO: вопрос 3 по выбору породы
-                cell.dogBreed.text = dogName ?? "У меня другая порода"
-                cell.dogBreed.textColor = .black
-                cell.accessoryType = .disclosureIndicator
-                cell.layer.cornerRadius = 10
-                cell.clipsToBounds = true
-                
-                
-            }
-            cell.selectionStyle = .none
-            
-            
-            return cell
-        }
-        return UITableViewCell()
-            
-            
         
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            // TODO: вопрос 3 по выбору породы
-            let complition = { [weak self] dogName in
-                self?.dogName = dogName
-                self?.breedsDogTableView.reloadData()
-                self?.item?.changeDogBreed?(dogName ?? "Другая порода")
-            }
-            self.item?.openListDogs?(complition)
-        } else {
-            if let item = items[indexPath.row] as? BreedsDogTableViewCellItem {
-                let dog = item.dog
-                let dogName = dog?.name
-                self.item?.changeDogBreed?(dog?.name ?? "Другая порода")
-                print(dogName)
-            }
-            
-
-        }
-        if let cell = tableView.cellForRow(at: indexPath) as? BreedsDogTableViewCell {
-            cell.selectCell()
-        }
+    @objc func listOfBreeds() {
+        self.item?.openListOfBreeds?(currentPetType ?? .dog)
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? BreedsDogTableViewCell {
-            cell.deselectCell()
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 16.VAdapted
-        }
-        return 0.VAdapted
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.VAdapted
-    }
-    
-    
-    
     
 }
-
-

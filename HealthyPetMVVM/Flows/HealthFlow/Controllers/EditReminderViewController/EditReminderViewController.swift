@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class EditReminderViewController: UIViewController {
+class EditReminderViewController: UIViewController, UIGestureRecognizerDelegate {
     
    
 
@@ -17,13 +17,13 @@ class EditReminderViewController: UIViewController {
     // MARK: - Views
     var rootView = EditReminderView()
     let viewModel = EditReminderViewModel()
-    // var items: [BaseConfigureCollectionCellRowProtocol] = []
     var reminder: Reminder = Reminder()
     let reminderService = ReminderService()
+    let historyReminderService = HistoryReminderService()
     var natificationCenter = NotificationCenter()
     
     
-    
+    // MARK: - Life cycle
     override func loadView() {
         super.loadView()
         self.view = rootView
@@ -50,14 +50,14 @@ class EditReminderViewController: UIViewController {
         super.viewWillLayoutSubviews()
         rootView.backgroundView.gradient()
     }
-    
+    // MARK: - Configure Views
     func configureView() {
         rootView.addSubviews()
         rootView.configureLayout()
         rootView.decorate()
         rootView.textView.text = viewModel.editReminder?.comment
         rootView.datePicker.date = viewModel.editReminder?.time ?? Date()
-        //rootView.completeButton.addTarget(self, action: #selector(openRepeatScreen), for: .touchUpInside)
+        rootView.completeButton.addTarget(self, action: #selector(completedReminder), for: .touchUpInside)
         rootView.deleteReminderButton.addTarget(self, action: #selector(deleteReminder), for: .touchUpInside)
         let leftBarButton = UIBarButtonItem(customView: rootView.leftBarButton)
         leftBarButton.tintColor = .clear
@@ -71,6 +71,7 @@ class EditReminderViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         rootView.textView.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         rootView.backgroundView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalTo(rootView.commentLabel.snp.bottom).offset(4)
@@ -83,29 +84,57 @@ class EditReminderViewController: UIViewController {
     }
     
     
-    
+    // MARK: - Action Buttons
     @objc func closeScreen() {
+        natificationCenter.removeLocalNotificationCenter()
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    @objc func completedReminder() {
+        if let action = viewModel.editReminder?.action {
+            viewModel.historyReminder.action = action
+        }
+        if let time = viewModel.editReminder?.time {
+            viewModel.historyReminder.time = time
+        }
+        if let reminderIcon = viewModel.editReminder?.reminderIcon {
+            viewModel.historyReminder.reminderIcon = reminderIcon
+        }
+        if let comment = viewModel.editReminder?.comment {
+            viewModel.historyReminder.comment = comment
+        }
+        
+        historyReminderService.saveHistoryReminder(historyReminder: viewModel.historyReminder)
+        
+        print(viewModel.historyReminder)
+        print(historyReminderService.getHistoryReminder())
+        natificationCenter.removeLocalNotificationCenter()
+        if let editReminder = viewModel.editReminder {
+            reminderService.removeReminder(reminder: editReminder)
+        }
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
     @objc func saveReminder() {
         natificationCenter.removeLocalNotificationCenter()
         viewModel.editReminderCopy?.comment = rootView.textView.text
         viewModel.editReminderCopy?.time = rootView.datePicker.date
-        reminderService.saveEditReminder(reminder: viewModel.editReminderCopy!)
+        if let editReminderCopy = viewModel.editReminderCopy {
+            reminderService.saveEditReminder(reminder: editReminderCopy)
+        }
+        
         self.navigationController?.popToRootViewController(animated: true)
         
     }
     @objc func deleteReminder() {
         natificationCenter.removeLocalNotificationCenter()
-        reminderService.removeReminder(reminder: viewModel.editReminder!)
+        if let editReminder = viewModel.editReminder {
+            reminderService.removeReminder(reminder: editReminder)
+        }
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    
-    
-    
-    
 }
+// MARK: - Extension 
 extension EditReminderViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {

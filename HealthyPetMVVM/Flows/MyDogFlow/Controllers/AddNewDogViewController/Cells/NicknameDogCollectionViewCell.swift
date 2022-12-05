@@ -54,7 +54,7 @@ class NicknameDogCollectionViewCell: BaseCollectionViewCell, UIImagePickerContro
         configureLayout()
     }
     override func configure(item: BaseConfigureCollectionCellRowProtocol) {
-        ourDogName.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Как зовут вашу собаку?", letter: 0.38)
+        ourDogName.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Как зовут вашего питомца?", letter: 0.38)
         ourDogName.font = UIFont.boldSystemFont(ofSize: CGFloat(20).adaptedFontSize)
         ourDogName.text = NSLocalizedString("ourDogName", comment: "")
         
@@ -64,16 +64,15 @@ class NicknameDogCollectionViewCell: BaseCollectionViewCell, UIImagePickerContro
         centralDogIcon.contentMode = .scaleAspectFill
         
         centralDogIcon.layer.borderWidth = 4
-        //centralDogIcon.layer.cornerRadius = centralDogIcon.bounds.size.height / 2.0
-        centralDogIcon.layer.cornerRadius = 39
+        centralDogIcon.layer.cornerRadius = 39.HAdapted
        
-        //centralDogIcon.bounds = centralDogIcon.bounds.insetBy(dx: -4, dy: -4)
+        
         centralDogIcon.clipsToBounds = true
         centralDogIcon.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openAlertPhoto))
         centralDogIcon.addGestureRecognizer(tapGesture)
         
-        addNewDogText.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "Добавьте фото собаки", letter: -0.41)
+        addNewDogText.customBlackText(nameFont: "SFProText-Regular", sizeFont: 17, text: "Добавьте фото питомца", letter: -0.41)
         addNewDogText.text = NSLocalizedString("addNewDogText", comment: "")
         
         notNecessaryText.customBlackText(nameFont: "SFProText-Regular", sizeFont: 13, text: "Необязательно", letter: -0.08)
@@ -148,5 +147,8 @@ extension NicknameDogCollectionViewCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameTextField.resignFirstResponder()
         return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameTextField.endEditing(true)
     }
 }

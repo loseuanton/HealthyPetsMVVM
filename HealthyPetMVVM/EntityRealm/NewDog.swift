@@ -16,7 +16,10 @@ class NewDog: Object, Identifiable {
     @Persisted var gender: String = "Мужской"
     @Persisted var ageYears = 0
     @Persisted var ageMonth = 0
-    @Persisted var breed: String = "Дургая порода"
+    @Persisted var animalDogOrCat: String = "Собака"
+    @Persisted var breed: String = "Метис"
+    @Persisted var imagePassport: Data
+    @Persisted var imageMedicalBook: Data
 }
 
 extension NewDog {
@@ -28,7 +31,10 @@ extension NewDog {
         newDog.gender = self.gender
         newDog.ageMonth = self.ageMonth
         newDog.ageYears = self.ageYears
+        newDog.animalDogOrCat = self.animalDogOrCat
         newDog.breed = self.breed
+        newDog.imagePassport = self.imagePassport
+        newDog.imageMedicalBook = self.imageMedicalBook
         return newDog
     }
 }

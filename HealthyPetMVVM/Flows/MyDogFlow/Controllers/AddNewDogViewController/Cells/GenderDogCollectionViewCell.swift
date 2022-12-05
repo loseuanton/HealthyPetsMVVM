@@ -45,7 +45,7 @@ class GenderDogCollectionViewCell: BaseCollectionViewCell {
         configureLayout()
     }
     override func configure(item: BaseConfigureCollectionCellRowProtocol) {
-        dogGender.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Какого пола ваша собака?", letter: 0.38)
+        dogGender.customBlackText(nameFont: "SFProText-Semibold", sizeFont: 20, text: "Какого пола ваш питомец?", letter: 0.38)
         dogGender.font = UIFont.boldSystemFont(ofSize: 20)
         
         

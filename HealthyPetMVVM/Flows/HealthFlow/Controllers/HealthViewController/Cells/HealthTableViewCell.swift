@@ -140,7 +140,7 @@ extension HealthTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             
             let title = item.careArray?.name
             let image = item.careArray?.image
-            self.item?.newTitle?(title ?? "", image ?? UIImage(named: "careImage-1"))
+            self.item?.newTitle?(title ?? "", image)
            
             
             print(image)

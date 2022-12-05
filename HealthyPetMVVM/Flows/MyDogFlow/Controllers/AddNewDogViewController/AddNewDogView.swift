@@ -22,6 +22,7 @@ class AddNewDogView: UIView {
     var leftDogImage = UIImageView()
     var rightDogImage = UIImageView()
     var textForPickerView = UILabel()
+    var breedText: String?
     var currentPage = 0
     var statePicker = 0
     var newDogCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -38,7 +39,7 @@ class AddNewDogView: UIView {
         leftDogImage.image = UIImage(named: "leftDogImage")
         leftDogImage.contentMode = .scaleAspectFit
         rightDogImage.image = UIImage(named: "rightDogImage")
-        rightDogImage.contentMode = .scaleAspectFit
+        rightDogImage.contentMode = .scaleAspectFill
         
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 50
@@ -54,6 +55,7 @@ class AddNewDogView: UIView {
         leftBarButton.clipsToBounds = true
         leftBarButton.setTitleColor(UIColor.blue, for: .selected)
         leftBarButton.backgroundColor = UIColor(red: 0.958, green: 0.958, blue: 0.958, alpha: 0.4)
+        leftBarButton.setBackgroundColor(color: UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.18), forState: .highlighted)
         
         pageControl.numberOfPages = 4
         pageControl.currentPageIndicatorTintColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
@@ -69,7 +71,7 @@ class AddNewDogView: UIView {
         
         newDogCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         newDogCollectionView.backgroundColor = nil
-        newDogCollectionView.isPagingEnabled = true
+        newDogCollectionView.isPagingEnabled = false
         newDogCollectionView.showsHorizontalScrollIndicator = false
         newDogCollectionView.isScrollEnabled = false
     }
@@ -133,9 +135,13 @@ class AddNewDogView: UIView {
             make.size.equalTo([128, 191].HResized)
         }
         rightDogImage.snp.makeConstraints { make in
-            make.right.equalTo(self.snp.right).offset(0.HAdapted)
-            make.bottom.equalTo(self.snp.bottom).offset(0.VAdapted)
-            make.size.equalTo([149, 292].HResized)
+            make.right.equalTo(self.snp.right)
+            make.bottom.equalTo(self.snp.bottom)
+            make.top.equalTo(backgroundView.snp.bottom).offset(24.VAdapted)
+            make.left.equalTo(leftDogImage.snp.right).offset(113.HAdapted)
+            make.height.equalTo(292.VAdapted)
+            //make.size.equalTo([149, 292].HResized)
+            
         }
         
         picker.snp.makeConstraints { make in
